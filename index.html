@@ -2,26 +2,20 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-
-    <!-- 
+    <!--
       TODO
-
       Upload your Unemployable (or whatever photo you like) to the assets/images folder
       and change the name of the image below to match the uploaded one
-
       Change the title in the <title> tag to whatever you would like the title of your portfolio to be
-
       This should be the same across all pages.
      -->
     <link rel="icon" href="./assets/images/1311.png" />
-		<title>Unemployables Portfolio</title>
-    <meta name="description" content="A portfolio template for the Unemployables community.">
+		<title>Camille Auvity - Portfolio</title>
+    <meta name="description" content="Portfolio de Camille Auvity, étudiante en data science et ingénierie IA.">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
 		<link rel="stylesheet" href="./css/layout.css">
     <link rel="stylesheet" href="./css/typography.css">
     <link rel="stylesheet" href="./css/utilities.css">
-
 		<script defer src="./js/script.js"></script>
 	</head>
 	<body>
@@ -29,23 +23,20 @@
     <div class="navbar">
       <a class="nav-title-link" href="./index.html">
         <!-- TODO - Change the "Portfolio Title" to whatever you want displayed in the top left -->
-        <span class="nav-title">Portfolio Title</span>
+        <span class="nav-title">Portfolio</span>
          <!-- TODO - Change the email after 'mailto:' to your email address for contact -->
-        <a class="button" href="mailto:whitevans.eth@gmail.com">
+        <a class="button" href="mailto:camille.auvity@example.com">
           <span class="button-text">Contact Me</span>
         </a>
       </a>
     </div>
-
     <!-- MAIN PAGE CONTENT -->
     <div id="main-content">
-
       <!-- PORTFOLIO HEADER -->
       <div id="portfolio-header">
         <div id="portfolio-header-image-container">
-          <!-- 
+          <!--
             TODO
-
             - Change the img "src" attribute to point to the Unemployable image you uploaded (or whatever image).
             - Change the number to point to your Unemployable & replace the OpenSea link with your own
             - If you aren't using an Unemployable as your image, remove the entire "a" element
@@ -55,10 +46,8 @@
             <span class="image-caption">Unemployables #1311</span>
           </a>
         </div>
-
-          <!-- 
+          <!--
             TODO
-
             - Change the main-title to whatver you want
             - Change the body-text after that to a quick introduction to what you do
             - Edit the button text if you feel like it. It will link to the projects section below.
@@ -69,19 +58,13 @@
               <div class="body-text">Data science and IA engineering student</div>
             </div>
             <a class="button" id="my-work-link">
-              <span class="button-text">Check out my projects</span> 
+              <span class="button-text">Check out my projects</span>
               <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
             </a>
         </div>
       </div>
 
       <!-- ABOUT SECTION -->
-      <!-- 
-        TODO
-
-        - Change the subheader-text to whatever header you want
-        - Add paragraphs using the <div class="body-text"></div> elements in the "about-section-content"
-      -->
       <div id="about-section">
         <span class="subheader-text">My Background / About Me</span>
         <div class="about-section-content">
@@ -92,15 +75,45 @@
         </div>
       </div>
 
+      <!-- STUDIES SECTION -->
+      <div id="studies-section">
+        <span class="subheader-text">My Studies</span>
+        <div class="about-section-content">
+          <div class="body-text">Double degree program between EM Lyon Business School and Mines de Saint-Étienne, specializing in data science, artificial intelligence, and management.</div>
+          <div class="body-text">Scientific preparatory program completed, providing a strong foundation in mathematics, physics, and computer science.</div>
+          <div class="body-text">Relevant coursework: Machine Learning, Data Analysis, Statistics, Business Intelligence, Finance, and Strategic Management.</div>
+        </div>
+      </div>
+
+      <!-- INTERNSHIPS SECTION -->
+      <div id="internships-section">
+        <span class="subheader-text">My Internships</span>
+        <div class="projects-container">
+          <!-- Example internship card -->
+          <div class="project-card">
+            <img src="./assets/images/desktop.jpeg" class="project-image">
+            <div class="project-card-text-container">
+              <div class="subheader-text project-title">Data Science Intern - Videtics</div>
+              <div class="body-text project-card-text">
+                Developed classification models to detect anomalies in surveillance cameras.
+                Worked on data preprocessing, model training, and performance evaluation.
+              </div>
+            </div>
+            <a class="button" href="./project-pages/videtics-internship.html">
+              <span class="button-text">Read More</span>
+              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+            </a>
+          </div>
+          <!-- Add more internship cards as needed -->
+        </div>
+      </div>
+
       <!-- PROJECTS / MY WORK SECTION -->
       <div id="my-work-section">
-        <!-- TODO - Change the subheader-text to whatever you want the Projects section header to say -->
         <span class="subheader-text">My Work / My Projects</span>
-
         <div class="projects-container">
-          <!-- 
+          <!--
             TODO
-
             This is where the project cards live. Here's a base level project card for you to copy:
             <div class="project-card">
               <img src="./assets/images/IMAGE_NAME" class="project-image">
@@ -113,7 +126,6 @@
                 <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
               </a>
             </div>
-
             - To add a project to the this area, copy the above, paste it below this comment, and change the following:
                 - IMAGE_NAME: the name of the image file in assets/images
                 - PROJECT_NAME: the name of the project (keep it short, it only shows 1 line)
@@ -155,35 +167,44 @@
           </div>
         </div>
       </div>
+
+      <!-- CONTACTS SECTION -->
+      <div id="contacts-section">
+        <span class="subheader-text">My Contacts</span>
+        <div class="about-section-content">
+          <div class="body-text">Email: camille.auvity@example.com</div>
+          <div class="body-text">LinkedIn: <a href="https://www.linkedin.com/in/camille-auvity/" target="_blank">linkedin.com/in/camille-auvity</a></div>
+          <div class="body-text">Twitter: <a href="https://twitter.com/camille_auvity" target="_blank">@camille_auvity</a></div>
+          <div class="body-text">GitHub: <a href="https://github.com/camilleauvity" target="_blank">github.com/camilleauvity</a></div>
+        </div>
+      </div>
     </div>
 
     <!-- FOOTER -->
     <div id="footer">
-      <!-- 
-        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram) 
+      <!--
+        TODO - Change href to your Instagram account (can also delete entire "a" element if no Instagram)
+        This should be the same across all pages.
+      -->
+      <a class="icon-link" target="_blank" href="https://www.instagram.com/camille_auvity/">
+        <image src="./assets/icons/instagram.svg" class="footer-icon"/>
+      </a>
+      <!--
+        TODO - Change href to your Twitter account (can also delete entire "a" element if no Twitter)
 
         This should be the same across all pages.
       -->
-      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
-        <image src="./assets/icons/instagram.svg" class="footer-icon"/>
-      </a>
-      <!-- 
-        TODO - Change href to your Twitter account (can also delete entire "a" element if no Twitter) 
-      
-        This should be the same across all pages.
-      -->
-      <a class="icon-link" target="_blank" href="https://twitter.com/whitevans_eth">
+      <a class="icon-link" target="_blank" href="https://twitter.com/camille_auvity">
         <image src="./assets/icons/twitter.svg" class="footer-icon"/>
       </a>
-      <!-- 
-        TODO - Change the email after "mailto" to your contact email 
-      
+      <!--
+        TODO - Change the email after "mailto" to your contact email
+
         This should be the same across all pages.
       -->
-      <a class="icon-link" href="mailto:whitevans.eth@gmail.com">
+      <a class="icon-link" href="mailto:camille.auvity@example.com">
         <image src="./assets/icons/mail.svg" class="footer-icon"/>
       </a>
     </div>
-
 	</body>
 </html>
