@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Camille Auvity — Portfolio</title>
+  <meta name="description" content="Portfolio of Camille Auvity — Data Scientist & Engineer. CV, skills, education, internships and code projects." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Futuristic gradient and animation */
+    body {
+      background: radial-gradient(circle at 20% 30%, #0f172a, #020617);
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass { background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); }
+    .neon { text-shadow: 0 0 8px #38bdf8, 0 0 16px #38bdf8; }
+    .hover-glow:hover { box-shadow: 0 0 15px #38bdf8; }
+    .lang-btn { transition: all 0.3s ease; }
+  </style>
+</head>
+<body class="antialiased leading-relaxed">
+
+  <!-- LANGUAGE TOGGLE -->
+  <div class="fixed top-4 right-4 z-50">
+    <button id="langBtn" class="lang-btn px-3 py-2 bg-sky-600 hover:bg-sky-700 rounded-md text-sm">FR / EN</button>
+  </div>
+
+  <!-- HERO INTRO -->
+  <section id="intro" class="min-h-screen flex flex-col items-center justify-center text-center px-6 relative">
+    <img src="https://cdn-icons-png.flaticon.com/512/1089/1089129.png" alt="neural network" class="w-24 h-24 mb-6 animate-pulse opacity-90" />
+    <h1 class="text-5xl md:text-6xl font-extrabold neon">Camille Auvity</h1>
+    <p class="mt-4 text-lg text-slate-300 max-w-xl">Data Scientist & Engineer passionate about AI, data-driven decisions, and elegant solutions.</p>
+    <a href="#home" class="mt-8 px-6 py-3 bg-sky-600 hover:bg-sky-700 rounded-md text-white text-lg hover-glow">Explore my work ↓</a>
+  </section>
+
+  <!-- NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-slate-900/70 backdrop-blur border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#intro" class="font-semibold text-lg">Camille Auvity</a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#skills" class="hover:underline">Skills</a>
+        <a href="#education" class="hover:underline">Education</a>
+        <a href="#internships" class="hover:underline">Internships</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#contact" class="px-3 py-1 rounded-md border border-sky-500 hover:bg-sky-600/20">Contact</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden p-2 border border-slate-700 rounded-md">☰</button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4">
+      <a href="#about" class="block py-2">About</a>
+      <a href="#skills" class="block py-2">Skills</a>
+      <a href="#education" class="block py-2">Education</a>
+      <a href="#internships" class="block py-2">Internships</a>
+      <a href="#projects" class="block py-2">Projects</a>
+      <a href="#contact" class="block py-2">Contact</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-5xl mx-auto px-6 py-12">
+    <!-- ABOUT -->
+    <section id="about" class="mb-12">
+      <h2 class="text-3xl font-semibold mb-4">About Me</h2>
+      <p class="text-neutral-300 text-lg">I'm a French Data Scientist and Engineer trained at <strong>École des Mines de Saint-Étienne</strong> and <strong>EM Lyon</strong>. I combine technical expertise in AI with an understanding of business and management to create impactful solutions that bridge innovation and strategy.</p>
+      <div class="mt-6 flex gap-3">
+        <a href="/cv_camille_auvity.pdf" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-sky-600 hover:bg-sky-700 text-white hover-glow">📄 View my CV</a>
+        <a href="#projects" class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-slate-700">See my projects</a>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="mb-12">
+      <h2 class="text-3xl font-semibold mb-4">Skills</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="p-4 rounded-lg border border-slate-800 glass hover-glow">
+          <h4 class="font-semibold">Programming & Tools</h4>
+          <p class="mt-2 text-slate-300 text-sm">Python, SQL, Git, Docker, Bash</p>
+        </div>
+        <div class="p-4 rounded-lg border border-slate-800 glass hover-glow">
+          <h4 class="font-semibold">Machine Learning</h4>
+          <p class="mt-2 text-slate-300 text-sm">Supervised learning, Deep Learning (PyTorch), Model evaluation</p>
+        </div>
+        <div class="p-4 rounded-lg border border-slate-800 glass hover-glow">
+          <h4 class="font-semibold">Data Engineering</h4>
+          <p class="mt-2 text-slate-300 text-sm">ETL, pipelines, cloud basics</p>
+        </div>
+        <div class="p-4 rounded-lg border border-slate-800 glass hover-glow">
+          <h4 class="font-semibold">Analytics & Visualization</h4>
+          <p class="mt-2 text-slate-300 text-sm">Pandas, Plotly, Dashboards</p>
+        </div>
+        <div class="p-4 rounded-lg border border-slate-800 glass hover-glow">
+          <h4 class="font-semibold">Business & Communication</h4>
+          <p class="mt-2 text-slate-300 text-sm">Presentation, Product research, Management</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="mb-12">
+      <h2 class="text-3xl font-semibold mb-4">Education</h2>
+      <div class="space-y-4">
+        <div class="p-4 rounded-lg border border-slate-800 glass">
+          <h3 class="font-semibold">École des Mines de Saint-Étienne</h3>
+          <p class="text-slate-400 text-sm">Engineering degree — Data Science & Artificial Intelligence</p>
+        </div>
+        <div class="p-4 rounded-lg border border-slate-800 glass">
+          <h3 class="font-semibold">EM Lyon Business School</h3>
+          <p class="text-slate-400 text-sm">Double degree — Finance & Management</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERNSHIPS -->
+    <section id="internships" class="mb-12">
+      <h2 class="text-3xl font-semibold mb-4">Internships</h2>
+      <div class="space-y-4">
+        <div class="p-4 rounded-lg border border-slate-800 glass">
+          <h3 class="font-semibold">Data Scientist Intern — BizeTix</h3>
+          <p class="text-slate-400 text-sm">3 months — Video analytics startup</p>
+          <ul class="mt-2 text-slate-300 text-sm list-disc pl-5">
+            <li>Developed ML models for video-based anomaly detection.</li>
+            <li>Implemented preprocessing pipelines and evaluation metrics.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="mb-12">
+      <h2 class="text-3xl font-semibold mb-4">Code Projects</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="p-4 rounded-lg border border-slate-800 glass hover-glow">
+          <h3 class="font-semibold">Running Shoe Market Analysis</h3>
+          <p class="mt-2 text-slate-300 text-sm">Social media data analysis to understand how running brands differentiate online.</p>
+          <div class="mt-4 flex gap-3">
+            <a href="https://github.com/camilleauvity/shoe-market" target="_blank" class="text-sm px-3 py-1 rounded-md border border-sky-500">Source</a>
+          </div>
+        </div>
+        <div class="p-4 rounded-lg border border-slate-800 glass hover-glow">
+          <h3 class="font-semibold">Video Quality Degradation Detection</h3>
+          <p class="mt-2 text-slate-300 text-sm">ML project for smart surveillance (video feed quality control).</p>
+          <div class="mt-4 flex gap-3">
+            <a href="https://github.com/camilleauvity/video-analytics" target="_blank" class="text-sm px-3 py-1 rounded-md border border-sky-500">Source</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mb-12 text-center">
+      <h2 class="text-3xl font-semibold mb-4">Contact</h2>
+      <p>Email: <a href="mailto:camille.auvity@example.com" class="underline text-sky-400">camille.auvity@example.com</a></p>
+      <p class="mt-2">LinkedIn: <a href="https://www.linkedin.com/in/camilleauvity" target="_blank" class="underline text-sky-400">camilleauvity</a></p>
+      <p class="mt-2">GitHub: <a href="https://github.com/camilleauvity" target="_blank" class="underline text-sky-400">camilleauvity</a></p>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-800 py-6 text-center text-slate-500 text-sm">
+    © <span id="year"></span> Camille Auvity — Built with 💡 and data.
+  </footer>
+
+  <script>
+    // Toggle mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Language toggle
+    const langBtn = document.getElementById('langBtn');
+    let lang = 'en';
+    langBtn.addEventListener('click', () => {
+      lang = lang === 'en' ? 'fr' : 'en';
+      document.documentElement.lang = lang;
+      alert(lang === 'fr' ? 'Version française bientôt disponible !' : 'Switched to English');
+    });
+  </script>
+</body>
+</html>
