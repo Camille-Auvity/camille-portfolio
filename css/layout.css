@@ -127,7 +127,7 @@ html {
   margin-left: -50vw; /* annule le centrage du #main-content */
   margin-right: -50vw;
   padding: 80px 0; /* espace autour du contenu */
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* fond doux */
+  background: linear-gradient(135deg, #f8f9fa, #f0f2f4); /* fond doux */
 }
 
 #internships-section .subheader-text {
