@@ -28,7 +28,15 @@ body {
   gap: 96px;
 }
 
+#internships-section .projects-container {
+  width: 100%;
+  display: block; /* supprime le flex qui limite la largeur */
+}
 
+.internship-card {
+  width: 100%;
+  max-width: none;
+}
 
 
 
