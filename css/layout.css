@@ -31,13 +31,13 @@ body {
 
 /* Pour la section des internships */
 #internships-section {
-  width: 80%;
+  width: 100%;
 }
 
 #internships-section .subheader-text {
   text-align: center;
   display: block;
-  width: 70%;
+  width: 100%;
   margin-bottom: 20px; /* Espace sous le titre */
 }
 
