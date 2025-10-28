@@ -110,11 +110,14 @@ body {
 }
 
 .project-image {
-  width: 10%;
+  width: 80%;
   height: 200px;
   object-fit: cover;
   object-position: center;
+  margin: 0 auto; /* centre horizontalement */
+  border-radius: 8px; /* optionnel, pour un style plus doux */
 }
+
 
 /* Responsive : 1 carte par ligne sur mobile */
 @media (max-width: 800px) {
