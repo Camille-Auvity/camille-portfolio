@@ -505,7 +505,7 @@ html {
   margin-left: -50vw;
   left: 50%;
   padding: 120px 0;
-  background: radial-gradient(circle at top, #ced9ff, #bbceff 70%);
+  background: radial-gradient(circle at top, #f4f6ff, #e6edff 70%);
   color: white;
   overflow: hidden;
   display: flex;
