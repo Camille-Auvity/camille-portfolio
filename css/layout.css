@@ -110,7 +110,7 @@ body {
 }
 
 .project-image {
-  width: 100%;
+  width: 90%;
   height: 200px;
   object-fit: cover;
   object-position: center;
