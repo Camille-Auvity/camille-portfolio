@@ -117,57 +117,6 @@ html {
   gap: 96px;
 }
 
-
-/* Pour la section des internships */
-#internships-section {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  width: 100vw; /* prend toute la largeur de la fenêtre */
-  margin-left: -50vw; /* annule le centrage du #main-content */
-  margin-right: -50vw;
-  padding: 80px 0; /* espace autour du contenu */
-  background: linear-gradient(135deg, #f8f9fa, #f0f2f4); /* fond doux */
-  display: flex;
-  flex-direction: column;
-  gap: 60px; 
-}
-
-#internships-section .subheader-text {
-  text-align: center;
-  display: block;
-  width: 100%;
-  margin-bottom: 40px;
-}
-
-.internship-card {
-  width: 92%;           
-  max-width: 1200px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  gap: 100px;
-  transition: all 0.3s ease;
-}
-
-.internship-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.internship-card {
-  margin-bottom: 40px; /* espace sous chaque card */
-}
-
-.internship-card:last-child {
-  margin-bottom: 0;
-}
-
-
 /* Portfolio Header */
 
 #portfolio-header {
@@ -211,6 +160,47 @@ html {
   flex-direction: column;
   gap: 34px;
 }
+
+
+/* Pour la section des internships */
+#internships-section {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw; /* prend toute la largeur de la fenêtre */
+  margin-left: -50vw; /* annule le centrage du #main-content */
+  margin-right: -50vw;
+  padding: 80px 0; /* espace autour du contenu */
+  background: linear-gradient(135deg, #f8f9fa, #f0f2f4); /* fond doux */
+  display: flex;
+  flex-direction: column;
+  gap: 60px; 
+}
+
+#internships-section .subheader-text {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin-bottom: 40px;
+  font-size: 40px;
+}
+
+.internship-card {
+  width: 92%;           
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  transition: all 0.3s ease;
+}
+
+
+
 
 /* Internship Card - full width with background */
 .internship-card {
@@ -293,6 +283,18 @@ html {
   gap: 10px;
 }
 
+.internship-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.internship-card {
+  margin-bottom: 20px;
+}
+
+.internship-card:last-child {
+  margin-bottom: 0;
+}
 
 
 /* Project Section */
