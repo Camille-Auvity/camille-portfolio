@@ -138,16 +138,22 @@ html {
 }
 
 .internship-card {
-  width: 70%;
+  width: 65%;            /* 👈 ajuste ici pour la largeur globale */
   max-width: 900px;
   margin: 0 auto;
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  padding: 100px 0;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  transition: all 0.3s ease;
+}
+
+.internship-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 
