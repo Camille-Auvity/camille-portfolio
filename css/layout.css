@@ -138,7 +138,7 @@ html {
 }
 
 .internship-card {
-  width: 65%;            /* 👈 ajuste ici pour la largeur globale */
+  width: 80%;           
   max-width: 900px;
   margin: 0 auto;
   background: white;
