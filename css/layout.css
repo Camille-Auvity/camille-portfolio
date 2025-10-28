@@ -326,7 +326,8 @@ html {
 .internship-header {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 2px;
+  font-size: 30px;
 }
 
 .internship-logo {
