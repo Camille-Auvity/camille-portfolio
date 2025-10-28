@@ -147,7 +147,7 @@ html {
   padding: 50px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 50px;
   transition: all 0.3s ease;
 }
 
