@@ -496,3 +496,84 @@ html {
 
 
 
+
+
+/* ===== CONTACT SECTION ===== */
+#contacts-section {
+  background: linear-gradient(135deg, #eef2f7, #ffffff);
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contacts-container {
+  max-width: 1000px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contact-intro {
+  font-size: 18px;
+  color: #555;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.contact-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  padding: 30px 40px;
+  width: 250px;
+  text-decoration: none;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  background: #0077ff;
+  color: white;
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 5px;
+}
+
+.contact-card p {
+  margin: 0;
+  font-size: 14px;
+  color: inherit;
+}
+
+@media (max-width: 700px) {
+  .contact-cards {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-card {
+    width: 100%;
+  }
+}
+
+
+
