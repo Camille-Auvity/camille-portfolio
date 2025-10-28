@@ -21,11 +21,13 @@ body {
 /* Main Page Layout */
 
 #main-content {
-  margin: 225px 425px;
+  margin: 225px auto;
+  max-width: 1400px; /* adapte selon ton goût */
   display: flex;
   flex-direction: column;
   gap: 96px;
 }
+
 
 
 
