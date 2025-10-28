@@ -191,8 +191,8 @@ html {
 
 /* Internship Card - full width with background */
 .internship-card {
-  width: 92%;
-  max-width: 1400px;
+  width: 90%;
+  max-width: 1000px;
   background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* fond doux et moderne */
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
