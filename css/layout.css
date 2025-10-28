@@ -28,10 +28,19 @@ body {
   gap: 96px;
 }
 
-#internships-section .projects-container {
+
+/* Pour la section des internships */
+#internships-section {
   width: 100%;
-  display: block; /* supprime le flex qui limite la largeur */
 }
+
+#internships-section .subheader-text {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px; /* Espace sous le titre */
+}
+
 
 .internship-card {
   width: 100%;
