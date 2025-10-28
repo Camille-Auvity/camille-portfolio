@@ -111,7 +111,7 @@ html {
 
 #main-content {
   margin: 225px auto;
-  max-width: 1400px; /* adapte selon ton goût */
+  max-width: 2000px; /* adapte selon ton goût */
   display: flex;
   flex-direction: column;
   gap: 96px;
@@ -129,7 +129,6 @@ html {
   width: 100%;
   margin-bottom: 20px; /* Espace sous le titre */
 }
-
 
 .internship-card {
   width: 100%;
