@@ -91,28 +91,36 @@ body {
   flex-wrap: wrap;
 }
 
-    /* Project Cards */
+    
+/* Project Cards */
+.project-card {
+  max-width: calc((100% - 32px) / 2); /* ➜ 2 cartes par ligne */
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  flex: 1 1 calc((100% - 32px) / 2); /* permet à flexbox d’adapter la largeur */
+}
 
-    .project-card {
-      max-width: calc((100% - 32px) / 3);
-      display: flex;
-      flex-direction: column;
-      gap: 34px;
-    }
+.project-card-text-container {
+  flex-direction: column;
+  display: flex;
+  gap: 16px;
+}
 
-    .project-card-text-container {
-      flex-direction: column;
-      display: flex;
-      gap: 16px
-    }
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
 
-    .project-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      object-position: center;
-    }
-
+/* Responsive : 1 carte par ligne sur mobile */
+@media (max-width: 800px) {
+  .project-card {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
 
 
 
