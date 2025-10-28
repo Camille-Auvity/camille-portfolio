@@ -182,7 +182,7 @@ html {
   display: block;
   width: 100%;
   margin-bottom: 40px;
-  font-size: 10px;
+  font-size: 40px;
 }
 
 .internship-card {
@@ -220,7 +220,7 @@ html {
   align-items: center;
   gap: 2px;
   padding-left: 10px;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .internship-logo {
