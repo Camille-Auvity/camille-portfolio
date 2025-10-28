@@ -26,31 +26,63 @@ a.icon-link:hover {
 
 /* Navbar Styling */
 
+
+/* ==== NAVBAR ==== */
 .navbar {
-  width: 100%;
-  padding: 30px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  z-index: 1000;
 }
 
-.nav-title-link {
-  color: black;
+.nav-title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
   text-decoration: none;
 }
 
-.nav-title-link:hover {
-  text-decoration: underline;
+.nav-right {
+  display: flex;
+  gap: 32px;
 }
 
-/* Small devices (portrait tablets and large phones, 800px and below) */
-@media only screen and (max-width: 800px) {
-  .navbar {
-    padding: 20px 20px;
-    background-color: white
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #0077ff;
+}
+
+/* Pour éviter que le contenu soit caché sous la navbar */
+body {
+  scroll-behavior: smooth; /* scroll fluide */
+}
+
+#main-content {
+  margin-top: 150px; /* espace sous la navbar */
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .nav-right {
+    gap: 16px;
+  }
+
+  .nav-link {
+    font-size: 14px;
   }
 }
 
