@@ -128,6 +128,9 @@ html {
   margin-right: -50vw;
   padding: 80px 0; /* espace autour du contenu */
   background: linear-gradient(135deg, #f8f9fa, #f0f2f4); /* fond doux */
+  display: flex;
+  flex-direction: column;
+  gap: 60px; 
 }
 
 #internships-section .subheader-text {
