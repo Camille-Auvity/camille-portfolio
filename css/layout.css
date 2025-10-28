@@ -118,7 +118,7 @@ body {
 }
 
 .internship-tasks li {
-  line-height: 1.5;
+  line-height: 1.1;
 }
 
 
@@ -170,6 +170,64 @@ body {
     flex: 1 1 100%;
   }
 }
+
+
+
+
+/* Internship Card - full width with background */
+.internship-card {
+  width: 100%;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* fond doux et moderne */
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.internship-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.internship-logo {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+.internship-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.internship-dates {
+  font-size: 15px;
+  color: #777;
+}
+
+.internship-tasks {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.internship-tasks li {
+  line-height: 1.6;
+}
+
+/* Optional: to make sure the card spans the full width inside the container */
+.full-width {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
 
 
 
