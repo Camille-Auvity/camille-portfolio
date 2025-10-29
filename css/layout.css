@@ -852,3 +852,46 @@ html {
     padding: 12px 24px;
   }
 }
+
+
+/* ===== SECTION TITLES (UNIFIED STYLE) ===== */
+.section-title,
+.subheader-text {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0077ff;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-title::after,
+.subheader-text::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border-radius: 2px;
+}
+
+/* Animation d'apparition */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Appliqué automatiquement à chaque titre */
+.subheader-text,
+.section-title {
+  animation: fadeSlideUp 0.8s ease forwards;
+}
