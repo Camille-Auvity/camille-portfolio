@@ -695,6 +695,16 @@ html {
   background: rgba(0, 119, 255, 0.2);
 }
 
+#studies-section .subheader-text {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0077ff;
+  margin-bottom: 40px;
+}
+
 #studies-section .subheader-text::after {
   content: "";
   display: block;
