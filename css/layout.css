@@ -349,6 +349,7 @@ html {
 
 #project-header {
   display: flex;
+  margin-top: 20px;
   flex-direction: column;
   gap: 16px;
 }
