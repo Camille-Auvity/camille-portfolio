@@ -81,7 +81,7 @@ html {
 
 /* Pour que le contenu ne soit pas caché sous le header */
 #main-content {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 /* Responsive (mobile) */
@@ -114,7 +114,7 @@ html {
   max-width: 2000px; /* adapte selon ton goût */
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 40px;
 }
 
 /* Portfolio Header */
@@ -193,7 +193,7 @@ html {
 .internship-card {
   width: 90%;
   max-width: 1000px;
-  background: linear-gradient(135deg, #949fab, #e9ecef); /* fond doux et moderne */
+  background: linear-gradient(135deg, #d9d9d9, #e9ecef); /* fond doux et moderne */
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   padding: 32px 40px;
@@ -585,7 +585,7 @@ html {
 
 /* ===== STUDIES SECTION ===== */
 .studies-bg {
-  background: linear-gradient(135deg, #eef2f3, #e3eaf1);
+  background: linear-gradient(135deg, #ebebeb, #eaeaea);
   padding: 50px 0;
 }
 
@@ -620,7 +620,7 @@ html {
 
 .study-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 119, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 119, 255, 0.159);
 }
 
 .study-header {
