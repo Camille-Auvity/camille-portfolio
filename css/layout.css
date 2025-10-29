@@ -586,7 +586,7 @@ html {
 /* ===== STUDIES SECTION ===== */
 .studies-bg {
   background: linear-gradient(135deg, #eef2f3, #e3eaf1);
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .study-card {
@@ -770,7 +770,7 @@ html {
 
 /* --- CV BUTTON --- */
 .cv-button-container {
-  margin-top: 40px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
