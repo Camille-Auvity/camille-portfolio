@@ -695,6 +695,17 @@ html {
   background: rgba(0, 119, 255, 0.2);
 }
 
+#studies-section .subheader-text::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border-radius: 2px;
+}
+
+
 /* Responsive */
 @media (max-width: 700px) {
   .study-card {
