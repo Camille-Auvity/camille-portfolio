@@ -698,6 +698,7 @@ html {
 #studies-section .subheader-text::after {
   content: "";
   display: block;
+  text-align: center;
   width: 60px;
   height: 4px;
   margin: 10px auto 0;
