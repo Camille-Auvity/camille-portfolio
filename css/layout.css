@@ -158,7 +158,7 @@ html {
 .about-section-content {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 15px;
 }
 
 
