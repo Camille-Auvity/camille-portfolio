@@ -231,8 +231,8 @@ html {
 }
 
 .internship-tasks {
-  margin: 10;
-  padding-left: 30px;
+  margin: 25;
+  padding-left: 40px;
   display: flex;
   flex-direction: column;
   gap: 10px;
