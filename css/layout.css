@@ -209,6 +209,7 @@ html {
   align-items: center;
   gap: 2px;
   padding-left: 10px;
+  padding-top: 10px;
   font-size: 25px;
 }
 
@@ -216,6 +217,7 @@ html {
   width: 120px;
   height: auto;
   padding-left: 20px;
+  padding-top: 10px;
   object-fit: contain;
 }
 
@@ -228,6 +230,7 @@ html {
 .internship-dates {
   font-size: 15px;
   padding-left: 10px;
+  padding-top: 10px;
   color: #777;
 }
 
