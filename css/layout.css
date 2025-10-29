@@ -743,6 +743,7 @@ html {
 
 /* ===== ABOUT SECTION UPGRADE ===== */
 #about-section {
+
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -854,30 +855,6 @@ html {
 }
 
 
-/* ===== SECTION TITLES (UNIFIED STYLE) ===== */
-.section-title,
-.subheader-text {
-  display: block;
-  text-align: center;
-  width: 100%;
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #0077ff;
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.section-title::after,
-.subheader-text::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  margin: 10px auto 0;
-  background: linear-gradient(90deg, #00c6ff, #0072ff);
-  border-radius: 2px;
-}
-
 /* Animation d'apparition */
 @keyframes fadeSlideUp {
   from {
@@ -893,5 +870,55 @@ html {
 /* Appliqué automatiquement à chaque titre */
 .subheader-text,
 .section-title {
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+
+
+/* ===== SECTION TITLES (UNIFIED STYLE, excluding project titles) ===== */
+
+/* Style appliqué uniquement aux grands titres de section */
+#about-section > .subheader-text,
+#studies-section > .subheader-text,
+#internships-section > .subheader-text,
+#my-work-section > .subheader-text {
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0077ff;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Barre lumineuse sous les titres */
+#about-section > .subheader-text::after,
+#studies-section > .subheader-text::after,
+#internships-section > .subheader-text::after,
+#my-work-section > .subheader-text::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  border-radius: 2px;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#about-section > .subheader-text,
+#studies-section > .subheader-text,
+#internships-section > .subheader-text,
+#my-work-section > .subheader-text {
   animation: fadeSlideUp 0.8s ease forwards;
 }
