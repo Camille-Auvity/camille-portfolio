@@ -925,34 +925,121 @@ html {
 }
 
 
-/* ===== RECENT PROJECTS SECTION ===== */
-#recent-projects {
-  margin-top: 90px; /* juste sous la navbar */
-  padding: 60px 60px 40px;
-  background: linear-gradient(135deg, #f8f9fa, #eef2f7);
+/* ===== INTRO HERO SECTION ===== */
+#intro-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 100px 80px;
+  background: radial-gradient(circle at top left, #e9f3ff, #f8faff 70%);
+  gap: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Effet glow animé en fond */
+#intro-hero::before {
+  content: "";
+  position: absolute;
+  top: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0,119,255,0.2), transparent 70%);
+  filter: blur(120px);
+  animation: glowPulse 8s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes glowPulse {
+  from { opacity: 0.6; transform: scale(1); }
+  to { opacity: 0.9; transform: scale(1.2); }
+}
+
+/* ==== LEFT SIDE ==== */
+.intro-left {
+  flex: 1;
+  text-align: center;
+  z-index: 2;
+}
+
+.intro-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(0, 119, 255, 0.3);
+  border: 4px solid white;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.intro-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(0, 119, 255, 0.45);
+}
+
+.intro-name {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #111;
+  background: linear-gradient(90deg, #0077ff, #00bfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.intro-role {
+  font-size: 1.2rem;
+  color: #555;
+  font-weight: 500;
+}
+
+/* ==== RIGHT SIDE ==== */
+.intro-right {
+  flex: 2;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  align-items: flex-start;
+  gap: 25px;
+  z-index: 2;
 }
 
 .recent-title {
   font-size: 2rem;
   font-weight: 700;
   color: #0077ff;
-  margin-left: 20px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
 }
 
-/* Scroll horizontal des projets */
+.recent-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, #00bfff, #0077ff);
+  border-radius: 2px;
+  animation: lineGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes lineGlow {
+  from { opacity: 0.5; width: 60%; }
+  to { opacity: 1; width: 80%; }
+}
+
+/* ==== SLIDER ==== */
 .projects-scroll {
   display: flex;
   overflow-x: auto;
-  gap: 25px;
   scroll-snap-type: x mandatory;
+  gap: 25px;
   padding-bottom: 15px;
-  width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: #0077ff #e0e0e0;
 }
 
 .projects-scroll::-webkit-scrollbar {
@@ -969,21 +1056,20 @@ html {
   border-radius: 8px;
 }
 
-/* Carte de projet */
 .project-card-mini {
-  flex: 0 0 320px;
+  flex: 0 0 300px;
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  scroll-snap-align: start;
   text-decoration: none;
   color: inherit;
-  scroll-snap-align: start;
   transition: all 0.3s ease;
 }
 
 .project-card-mini:hover {
   transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0, 119, 255, 0.25);
+  box-shadow: 0 8px 25px rgba(0, 119, 255, 0.35);
 }
 
 .project-mini-img {
@@ -1009,17 +1095,23 @@ html {
   color: #444;
 }
 
-/* Responsive */
-@media (max-width: 800px) {
-  #recent-projects {
-    padding: 40px 20px;
+/* ===== RESPONSIVE ===== */
+@media (max-width: 950px) {
+  #intro-hero {
+    flex-direction: column;
+    padding: 60px 20px;
+  }
+
+  .intro-left {
+    order: 1;
+  }
+
+  .intro-right {
+    order: 2;
+    width: 100%;
   }
 
   .project-card-mini {
     flex: 0 0 80%;
-  }
-
-  .recent-title {
-    font-size: 1.6rem;
   }
 }
