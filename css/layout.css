@@ -643,6 +643,8 @@ html {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .study-title {
