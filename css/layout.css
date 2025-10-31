@@ -1029,7 +1029,6 @@ html {
   }
 }
 
-
 /* ===== HORIZONTAL CAROUSEL ===== */
 .horizontal-carousel {
   display: flex;
@@ -1090,5 +1089,73 @@ html {
 @media (max-width: 800px) {
   .carousel-item {
     flex: 0 0 90%;
+  }
+}
+
+
+/* ===== 3D CAROUSEL ===== */
+.carousel-3d {
+  width: 100%;
+  max-width: 900px;
+  perspective: 1200px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 40px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease;
+  cursor: grab;
+}
+
+.carousel-card {
+  flex: 0 0 60%;
+  max-width: 500px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  text-align: center;
+  transform: scale(0.8);
+  opacity: 0.6;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.carousel-card.active {
+  transform: scale(1) translateZ(80px);
+  opacity: 1;
+}
+
+.carousel-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  height: 200px;
+}
+
+.carousel-card h4 {
+  font-size: 1.2rem;
+  color: #0077ff;
+  margin-bottom: 8px;
+}
+
+.carousel-card p {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Drag cursor */
+.carousel-track:active {
+  cursor: grabbing;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .carousel-card {
+    flex: 0 0 80%;
   }
 }
