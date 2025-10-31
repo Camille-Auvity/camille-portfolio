@@ -79,10 +79,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Pour que le contenu ne soit pas caché sous le header */
-#main-content {
-  margin-top: 20px;
-}
 
 /* Responsive (mobile) */
 @media (max-width: 800px) {
@@ -114,7 +110,7 @@ html {
   max-width: 2000px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 80px;
 }
 
 /* Portfolio Header */
@@ -301,7 +297,7 @@ html {
 .projects-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 40px;
   justify-content: center;
 }
 
