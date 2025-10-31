@@ -110,7 +110,7 @@ html {
   max-width: 2000px;
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 120px;
 }
 
 /* Portfolio Header */
@@ -297,7 +297,7 @@ html {
 .projects-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 32px;
   justify-content: center;
 }
 
@@ -308,6 +308,7 @@ html {
   flex-direction: column;
   gap: 34px;
   flex: 1 1 calc((100% - 32px) / 2); /* permet à flexbox d’adapter la largeur */
+  margin-bottom: 20px;
 }
 
 .project-card-text-container {
