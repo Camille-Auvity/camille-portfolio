@@ -925,50 +925,47 @@ html {
 }
 
 
-/* ===== HERO SECTION WITH FLOATING PROFILE (wider layout) ===== */
+/* ===== HERO SECTION ===== */
 #hero-section {
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  min-height: 500px;
-  padding: 160px 100px 120px 100px; /* plus large sur les côtés */
+  min-height: 550px;
+  padding: 120px 100px;
   background: linear-gradient(135deg, #f9fbff, #edf3ff);
-  overflow: visible; /* pour laisser dépasser la photo */
+  overflow: visible;
+  gap: 80px; /* space between photo and box */
 }
 
-/* ===== Floating profile ===== */
+/* Profile block to the left */
 .profile-floating {
-  position: absolute;
-  left: 5%; /* plus près du bord */
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  flex-shrink: 0;
   text-align: center;
   z-index: 3;
 }
 
+/* Clean photo, no overlay */
 .profile-photo {
-  width: 230px;
-  height: 230px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
-  border: 5px solid white;
-  box-shadow: 0 0 40px rgba(0, 119, 255, 0.3);
   object-fit: cover;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 25px rgba(0, 119, 255, 0.25);
+  transition: transform 0.3s ease;
+  border: none;
 }
 
 .profile-photo:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 55px rgba(0, 119, 255, 0.45);
+  transform: scale(1.05);
 }
 
 .profile-name {
-  margin-top: 20px;
+  margin-top: 18px;
   font-size: 2.2rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #0077ff, #00c6ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #0077ff;
 }
 
 .profile-role {
@@ -976,16 +973,15 @@ html {
   color: #555;
 }
 
-/* ===== Projects box (moved further right) ===== */
+/* Projects box to the right */
 .projects-box {
   background: white;
   border-radius: 28px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
-  padding: 60px 60px 50px;
-  width: 75%; /* plus large */
-  margin-left: auto;
-  z-index: 2;
+  padding: 60px;
+  width: 70%;
   position: relative;
+  z-index: 2;
 }
 
 .projects-box::before {
@@ -1000,119 +996,15 @@ html {
   z-index: 0;
 }
 
-/* ===== Title ===== */
-.recent-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #0077ff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 25px;
-  position: relative;
-}
-
-.recent-title::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 65%;
-  height: 3px;
-  background: linear-gradient(90deg, #00bfff, #0077ff);
-  border-radius: 2px;
-  animation: titleGlow 3s ease-in-out infinite alternate;
-}
-
-@keyframes titleGlow {
-  from { opacity: 0.5; width: 50%; }
-  to { opacity: 1; width: 75%; }
-}
-
-/* ===== Horizontal projects scroll ===== */
-.projects-scroll {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 25px;
-  padding-bottom: 15px;
-  scrollbar-width: thin;
-  scrollbar-color: #0077ff #e0e0e0;
-}
-
-.projects-scroll::-webkit-scrollbar {
-  height: 10px;
-}
-
-.projects-scroll::-webkit-scrollbar-thumb {
-  background-color: #0077ff;
-  border-radius: 8px;
-}
-
-.projects-scroll::-webkit-scrollbar-track {
-  background: #e0e0e0;
-  border-radius: 8px;
-}
-
-/* ===== Project cards ===== */
-.project-card-mini {
-  flex: 0 0 300px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: inherit;
-  scroll-snap-align: start;
-  transition: all 0.3s ease;
-}
-
-.project-card-mini:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 119, 255, 0.35);
-}
-
-.project-mini-img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-
-.project-mini-text {
-  padding: 15px;
-}
-
-.project-mini-text h3 {
-  font-size: 1.1rem;
-  color: #0077ff;
-  margin-bottom: 8px;
-}
-
-.project-mini-text p {
-  font-size: 0.95rem;
-  color: #444;
-}
-
-/* ===== Responsive ===== */
+/* Responsive adjustments */
 @media (max-width: 1000px) {
   #hero-section {
     flex-direction: column;
+    gap: 40px;
     padding: 100px 20px;
-  }
-
-  .profile-floating {
-    position: relative;
-    left: 0;
-    top: 0;
-    transform: none;
-    margin-bottom: 40px;
   }
 
   .projects-box {
     width: 100%;
-  }
-
-  .project-card-mini {
-    flex: 0 0 80%;
   }
 }
