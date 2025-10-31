@@ -20,41 +20,6 @@
 	</head>
 
 	<body>
-    <!-- ===== INTRO SECTION ===== -->
-    <section id="intro-section">
-      <div class="intro-left">
-        <img src="./assets/images/photomoi.png" alt="Camille Auvity" class="intro-photo">
-        <h1 class="intro-name">Camille Auvity</h1>
-        <p class="intro-role">Data Science & AI Engineering Student</p>
-      </div>
-
-      <div class="intro-right">
-        <div class="project-slide">
-          <img src="./assets/images/Projection cluster k-means 3D.png" alt="Runner performance" class="slide-img">
-          <div class="slide-text">
-            <h3>Runner’s Performance Prediction</h3>
-            <p>Predicting and analyzing runners’ performance from Strava data.</p>
-          </div>
-        </div>
-
-        <div class="project-slide">
-          <img src="./assets/images/img_0328_pred_data_occlusion_gt_data_occlusion.jpg" alt="Camera issue detection" class="slide-img">
-          <div class="slide-text">
-            <h3>Camera Issue Detection</h3>
-            <p>AI model to detect camera anomalies (blur, occlusion, lighting).</p>
-          </div>
-        </div>
-
-        <div class="project-slide">
-          <img src="./assets/images/Simulating and pricing photo.png" alt="Option pricing" class="slide-img">
-          <div class="slide-text">
-            <h3>Option Pricing Simulation</h3>
-            <p>Monte Carlo approach to price financial options efficiently.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- NAVBAR -->
     <header class="navbar">
       <div class="nav-left">
@@ -69,40 +34,41 @@
         <a href="#my-work-section" class="nav-button">Portfolio</a>
         <a href="#contacts-section" class="nav-button">Contact</a>
       </nav>
-    </header>
+    </header>    
     <!-- MAIN PAGE CONTENT -->
     <div id="main-content">
       <!-- PORTFOLIO HEADER -->
       <div id="portfolio-header">
-        <div id="portfolio-header-image-container">
-          <!--
-            TODO
-            - Change the img "src" attribute to point to the Unemployable image you uploaded (or whatever image).
-            - Change the number to point to your Unemployable & replace the OpenSea link with your own
-            - If you aren't using an Unemployable as your image, remove the entire "a" element
-          -->
-          <img src="./assets/images/photomoi.png" class="portfolio-header-image">
-          <a class="no-underline" target="_blank" href="https://opensea.io/assets/0xe0be388ab81c47b0f098d2030a1c9ef190691a8a/1311">
-            <span class="image-caption"></span>
-          </a>
-        </div>
-          <!--
-            TODO
-            - Change the main-title to whatver you want
-            - Change the body-text after that to a quick introduction to what you do
-            - Edit the button text if you feel like it. It will link to the projects section below.
-          -->
-        <div id="portfolio-header-text-container">
-            <div class="header-text">
-              <span class="main-title">Camille Auvity</span>
-              <div class="body-text">Data science and IA engineering student</div>
-            </div>
-            <a class="button" id="my-work-link">
-              <span class="button-text">Check out my projects</span>
-              <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
+        <!-- ===== RECENT PROJECTS SECTION ===== -->
+        <section id="recent-projects">
+          <h2 class="recent-title">Recent Projects</h2>
+    
+          <div class="projects-scroll">
+            <a href="https://github.com/Camille-Auvity/Runner-s-Performance" target="_blank" class="project-card-mini">
+              <img src="./assets/images/Projection cluster k-means 3D.png" alt="Runner performance" class="project-mini-img">
+              <div class="project-mini-text">
+                <h3>Runner’s Performance Prediction</h3>
+                <p>Predicting and analyzing runners’ performance from Strava data.</p>
+              </div>
             </a>
-        </div>
-      </div>
+    
+            <a href="https://github.com/Camille-Auvity/Detection-camera-issue" target="_blank" class="project-card-mini">
+              <img src="./assets/images/img_0328_pred_data_occlusion_gt_data_occlusion.jpg" alt="Camera issue detection" class="project-mini-img">
+              <div class="project-mini-text">
+                <h3>Camera Issue Detection</h3>
+                <p>AI model to detect camera anomalies (blur, occlusion, lighting).</p>
+              </div>
+            </a>
+    
+            <a href="https://github.com/Camille-Auvity/Simulating-and-pricing-financial-options" target="_blank" class="project-card-mini">
+              <img src="./assets/images/Simulating and pricing photo.png" alt="Option pricing" class="project-mini-img">
+              <div class="project-mini-text">
+                <h3>Option Pricing Simulation</h3>
+                <p>Monte Carlo simulation for financial option pricing.</p>
+              </div>
+            </a>
+          </div>
+        </section>
 
       <!-- ABOUT SECTION -->
       <section id="about-section">
