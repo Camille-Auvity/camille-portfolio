@@ -643,25 +643,29 @@ html {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 .study-title {
   font-size: 1.6rem;
   font-weight: 700;
   color: #111;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .study-dates {
   font-size: 0.95rem;
   color: #777;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .study-degree {
   font-size: 1rem;
   color: #0077ff;
   font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .study-courses {
