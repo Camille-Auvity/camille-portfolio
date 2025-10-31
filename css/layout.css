@@ -1159,3 +1159,52 @@ html {
     flex: 0 0 80%;
   }
 }
+
+
+/* ===== ABOUT SECTION TWO-COLUMN LAYOUT ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 60px;
+  width: 100vw;               /* ✅ prend toute la largeur de la fenêtre */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;         /* ✅ supprime les marges du conteneur central */
+  margin-right: -50vw;
+  padding: 80px 80px;         /* espaces internes pour respirer */
+  background: linear-gradient(135deg, #f8f9fa, #f0f2f4); /* joli fond doux */
+}
+
+
+.about-text p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #222;
+}
+
+
+.about-skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Responsive (mobile/tablette) */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .about-skills {
+    align-items: center;
+  }
+
+  .about-text p {
+    text-align: center;
+  }
+}
