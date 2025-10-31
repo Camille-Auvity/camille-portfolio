@@ -960,14 +960,14 @@ html {
   font-weight: 500;
 }
 
-/* --- Intro layout --- */
+/* 
 #intro-section {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 60px;
-}
+  gap: 40px;
+} --- Intro layout --- */
 
 /* Container for title + carousel */
 .intro-right-container {
