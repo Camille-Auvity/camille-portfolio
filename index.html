@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="./css/typography.css">
     <link rel="stylesheet" href="./css/utilities.css">
 		<script defer src="./js/script.js"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 	</head>
 
 	<body>
@@ -27,32 +31,42 @@
         </div>
       </div>
       <div class="intro-right-container">
-        <h3 class="recent-project-title">Recent Project</h3>
-        <div class="intro-right">
+        <h3 class="recent-project-title">Recent Projects</h3>
       
-          <div class="project-slide">
-            <img src="./assets/images/Projection cluster k-means 3D.png" alt="Runner performance" class="slide-img">
-            <div class="slide-text">
-              <h3>Runner’s Performance Prediction</h3>
-              <p>Predicting and analyzing runners’ performance from Strava data.</p>
+        <!-- Swiper container -->
+        <div class="swiper recent-projects-swiper">
+          <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide project-slide">
+              <img src="./assets/images/Projection cluster k-means 3D.png" alt="Runner performance" class="slide-img">
+              <div class="slide-text">
+                <h3>Runner’s Performance Prediction</h3>
+                <p>Predicting and analyzing runners’ performance from Strava data.</p>
+              </div>
+            </div>
+      
+            <!-- Slide 2 -->
+            <div class="swiper-slide project-slide">
+              <img src="./assets/images/img_0328_pred_data_occlusion_gt_data_occlusion.jpg" alt="Camera issue detection" class="slide-img">
+              <div class="slide-text">
+                <h3>Camera Issue Detection</h3>
+                <p>AI model to detect camera anomalies (blur, occlusion, lighting).</p>
+              </div>
+            </div>
+      
+            <!-- Slide 3 -->
+            <div class="swiper-slide project-slide">
+              <img src="./assets/images/Simulating and pricing photo.png" alt="Option pricing" class="slide-img">
+              <div class="slide-text">
+                <h3>Option Pricing Simulation</h3>
+                <p>Monte Carlo approach to price financial options efficiently.</p>
+              </div>
             </div>
           </div>
-
-          <div class="project-slide">
-            <img src="./assets/images/img_0328_pred_data_occlusion_gt_data_occlusion.jpg" alt="Camera issue detection" class="slide-img">
-            <div class="slide-text">
-              <h3>Camera Issue Detection</h3>
-              <p>AI model to detect camera anomalies (blur, occlusion, lighting).</p>
-            </div>
-          </div>
-
-          <div class="project-slide">
-            <img src="./assets/images/Simulating and pricing photo.png" alt="Option pricing" class="slide-img">
-            <div class="slide-text">
-              <h3>Option Pricing Simulation</h3>
-              <p>Monte Carlo approach to price financial options efficiently.</p>
-            </div>
-          </div>
+      
+          <!-- Navigation buttons -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
       </div>
     </section>
