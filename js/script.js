@@ -4,6 +4,7 @@ if (document.getElementById('my-work-link')) {
   })
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
   new Swiper(".recent-projects-swiper", {
     slidesPerView: 2,
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     breakpoints: {
       0: { slidesPerView: 1 },
       900: { slidesPerView: 2 },
-      1200: { slidesPerView: 3 },
+      1200: { slidesPerView: 2 }, /* MODIFIÉ : Affiche maximum 2 slides pour une plus grande largeur */
     },
   });
 });

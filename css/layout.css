@@ -955,7 +955,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1;
+  flex: 2; 
 }
 
 /* --- Recent Projects Carousel --- */
@@ -972,11 +972,16 @@ html {
 
 .recent-projects-swiper {
   width: 100%;
-  max-width: 900px;
+  max-width: 900px; /* Conserve la largeur maximale du carrousel */
   padding-bottom: 30px;
 }
 
 .project-slide {
+  /* Nouvelle règle ou ajustement pour forcer une largeur par défaut si besoin */
+  /* Swiper gère généralement la largeur via JS (slidesPerView) et CSS/auto */
+  /* Si slidesPerView est à 'auto' dans script.js: */
+  /* width: 45%; /* Exemple : 45% pour voir deux diapositives côte à côte avec un peu d'espace */
+
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(0, 119, 255, 0.3);
   border-radius: 20px;
