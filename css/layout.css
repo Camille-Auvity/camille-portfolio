@@ -925,86 +925,88 @@ html {
 }
 
 
-/* ===== HERO ROW (name + photo left, projects right) ===== */
-#hero-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 80px 60px;
-  background: linear-gradient(135deg, #f9fbff, #eaf2ff);
-  gap: 60px;
+/* ===== HERO SECTION WITH FLOATING PROFILE ===== */
+#hero-section {
   position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 140px 80px 100px;
+  background: linear-gradient(135deg, #f9fbff, #edf3ff);
   overflow: hidden;
 }
 
-/* halo bleu en fond */
-#hero-row::before {
-  content: "";
+/* ===== Floating profile (outside box) ===== */
+.profile-floating {
   position: absolute;
-  top: -100px;
-  left: -100px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(0,119,255,0.25), transparent 70%);
-  filter: blur(100px);
-  z-index: 0;
-}
-
-/* ==== LEFT SIDE ==== */
-.hero-left {
-  flex: 1;
+  left: 8%;
+  top: 50%;
+  transform: translateY(-50%);
   text-align: center;
-  z-index: 2;
+  z-index: 3;
 }
 
-.hero-photo {
-  width: 180px;
-  height: 180px;
+.profile-photo {
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  object-fit: cover;
   border: 4px solid white;
-  box-shadow: 0 0 25px rgba(0, 119, 255, 0.35);
-  margin-bottom: 18px;
+  box-shadow: 0 0 30px rgba(0, 119, 255, 0.3);
+  object-fit: cover;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hero-photo:hover {
+.profile-photo:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 35px rgba(0, 119, 255, 0.45);
+  box-shadow: 0 0 40px rgba(0, 119, 255, 0.45);
 }
 
-.hero-name {
-  font-size: 2.4rem;
+.profile-name {
+  margin-top: 18px;
+  font-size: 2rem;
   font-weight: 700;
   background: linear-gradient(90deg, #0077ff, #00c6ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 8px;
 }
 
-.hero-role {
-  font-size: 1.1rem;
+.profile-role {
+  font-size: 1rem;
   color: #555;
-  font-weight: 500;
 }
 
-/* ==== RIGHT SIDE ==== */
-.hero-right {
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+/* ===== Projects box ===== */
+.projects-box {
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+  padding: 50px 50px 40px;
+  width: 70%;
   z-index: 2;
+  position: relative;
 }
 
+.projects-box::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0,119,255,0.15), transparent 70%);
+  filter: blur(100px);
+  z-index: 0;
+}
+
+/* ===== Title ===== */
 .recent-title {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: #0077ff;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-bottom: 20px;
   position: relative;
-  display: inline-block;
 }
 
 .recent-title::after {
@@ -1012,25 +1014,25 @@ html {
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: 70%;
+  width: 60%;
   height: 3px;
   background: linear-gradient(90deg, #00bfff, #0077ff);
   border-radius: 2px;
-  animation: lineGlow 3s ease-in-out infinite alternate;
+  animation: titleGlow 3s ease-in-out infinite alternate;
 }
 
-@keyframes lineGlow {
-  from { opacity: 0.5; width: 60%; }
-  to { opacity: 1; width: 80%; }
+@keyframes titleGlow {
+  from { opacity: 0.5; width: 50%; }
+  to { opacity: 1; width: 70%; }
 }
 
-/* ==== SCROLLING PROJECTS ==== */
+/* ===== Horizontal projects scroll ===== */
 .projects-scroll {
   display: flex;
   overflow-x: auto;
-  gap: 25px;
   scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
+  gap: 25px;
+  padding-bottom: 15px;
   scrollbar-width: thin;
   scrollbar-color: #0077ff #e0e0e0;
 }
@@ -1049,14 +1051,15 @@ html {
   border-radius: 8px;
 }
 
+/* ===== Project cards ===== */
 .project-card-mini {
   flex: 0 0 280px;
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  scroll-snap-align: start;
   text-decoration: none;
   color: inherit;
+  scroll-snap-align: start;
   transition: all 0.3s ease;
 }
 
@@ -1088,14 +1091,22 @@ html {
   color: #444;
 }
 
-/* ==== RESPONSIVE ==== */
-@media (max-width: 900px) {
-  #hero-row {
+/* ===== Responsive ===== */
+@media (max-width: 1000px) {
+  #hero-section {
     flex-direction: column;
-    padding: 60px 20px;
+    padding: 100px 20px;
   }
 
-  .hero-right {
+  .profile-floating {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    margin-bottom: 40px;
+  }
+
+  .projects-box {
     width: 100%;
   }
 
