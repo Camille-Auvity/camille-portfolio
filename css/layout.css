@@ -925,79 +925,72 @@ html {
 }
 
 
-/* ===== INTRO HERO SECTION ===== */
-#intro-hero {
+/* ===== HERO ROW (name + photo left, projects right) ===== */
+#hero-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 100px 80px;
-  background: radial-gradient(circle at top left, #e9f3ff, #f8faff 70%);
+  justify-content: space-between;
+  padding: 80px 60px;
+  background: linear-gradient(135deg, #f9fbff, #eaf2ff);
   gap: 60px;
   position: relative;
   overflow: hidden;
 }
 
-/* Effet glow animé en fond */
-#intro-hero::before {
+/* halo bleu en fond */
+#hero-row::before {
   content: "";
   position: absolute;
-  top: -150px;
-  left: -150px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0,119,255,0.2), transparent 70%);
-  filter: blur(120px);
-  animation: glowPulse 8s ease-in-out infinite alternate;
+  top: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0,119,255,0.25), transparent 70%);
+  filter: blur(100px);
   z-index: 0;
 }
 
-@keyframes glowPulse {
-  from { opacity: 0.6; transform: scale(1); }
-  to { opacity: 0.9; transform: scale(1.2); }
-}
-
 /* ==== LEFT SIDE ==== */
-.intro-left {
+.hero-left {
   flex: 1;
   text-align: center;
   z-index: 2;
 }
 
-.intro-photo {
-  width: 220px;
-  height: 220px;
+.hero-photo {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 25px rgba(0, 119, 255, 0.3);
   border: 4px solid white;
-  margin-bottom: 25px;
+  box-shadow: 0 0 25px rgba(0, 119, 255, 0.35);
+  margin-bottom: 18px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.intro-photo:hover {
+.hero-photo:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(0, 119, 255, 0.45);
+  box-shadow: 0 0 35px rgba(0, 119, 255, 0.45);
 }
 
-.intro-name {
-  font-size: 2.8rem;
+.hero-name {
+  font-size: 2.4rem;
   font-weight: 700;
-  color: #111;
-  background: linear-gradient(90deg, #0077ff, #00bfff);
+  background: linear-gradient(90deg, #0077ff, #00c6ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 8px;
 }
 
-.intro-role {
-  font-size: 1.2rem;
+.hero-role {
+  font-size: 1.1rem;
   color: #555;
   font-weight: 500;
 }
 
 /* ==== RIGHT SIDE ==== */
-.intro-right {
-  flex: 2;
+.hero-right {
+  flex: 3;
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -1005,7 +998,7 @@ html {
 }
 
 .recent-title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #0077ff;
   text-transform: uppercase;
@@ -1019,7 +1012,7 @@ html {
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: 80%;
+  width: 70%;
   height: 3px;
   background: linear-gradient(90deg, #00bfff, #0077ff);
   border-radius: 2px;
@@ -1031,13 +1024,13 @@ html {
   to { opacity: 1; width: 80%; }
 }
 
-/* ==== SLIDER ==== */
+/* ==== SCROLLING PROJECTS ==== */
 .projects-scroll {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
   gap: 25px;
-  padding-bottom: 15px;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
   scrollbar-width: thin;
   scrollbar-color: #0077ff #e0e0e0;
 }
@@ -1057,7 +1050,7 @@ html {
 }
 
 .project-card-mini {
-  flex: 0 0 300px;
+  flex: 0 0 280px;
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -1068,13 +1061,13 @@ html {
 }
 
 .project-card-mini:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 25px rgba(0, 119, 255, 0.35);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 119, 255, 0.35);
 }
 
 .project-mini-img {
   width: 100%;
-  height: 180px;
+  height: 160px;
   object-fit: cover;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1091,23 +1084,18 @@ html {
 }
 
 .project-mini-text p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #444;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 950px) {
-  #intro-hero {
+/* ==== RESPONSIVE ==== */
+@media (max-width: 900px) {
+  #hero-row {
     flex-direction: column;
     padding: 60px 20px;
   }
 
-  .intro-left {
-    order: 1;
-  }
-
-  .intro-right {
-    order: 2;
+  .hero-right {
     width: 100%;
   }
 
