@@ -925,137 +925,85 @@ html {
 }
 
 
-/* ===== HERO SECTION ===== */
-#hero-section {
-  position: relative;
+
+
+/* ===== INTRO SECTION ===== */
+#intro-section {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  min-height: 550px;
-  padding: 120px 100px;
-  background: linear-gradient(135deg, #f9fbff, #edf3ff);
-  overflow: visible;
-  gap: 80px; /* space between photo and box */
+  padding: 100px 80px;
+  background: linear-gradient(135deg, #f8f9fa, #e9eef5);
+  gap: 40px;
 }
 
-/* Profile block to the left */
-.profile-floating {
-  position: relative;
-  flex-shrink: 0;
+.intro-left {
+  flex: 1;
   text-align: center;
-  z-index: 3;
 }
 
-/* Clean photo, no overlay */
-.profile-photo {
-  width: 260px;
-  height: 260px;
+.intro-photo {
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 25px rgba(0, 119, 255, 0.25);
-  transition: transform 0.3s ease;
-  border: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  margin-bottom: 20px;
 }
 
-.profile-photo:hover {
-  transform: scale(1.05);
-}
-
-.profile-name {
-  margin-top: 18px;
-  font-size: 2.2rem;
+.intro-name {
+  font-size: 2.5rem;
   font-weight: 700;
+  color: #111;
+}
+
+.intro-role {
+  font-size: 1.2rem;
   color: #0077ff;
+  font-weight: 500;
 }
 
-.profile-role {
-  font-size: 1.05rem;
-  color: #555;
-}
-
-/* Projects box to the right */
-.projects-box {
-  background: white;
-  border-radius: 28px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
-  padding: 60px;
-  width: 70%;
-  position: relative;
-  z-index: 2;
-}
-
-.projects-box::before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(0,119,255,0.15), transparent 70%);
-  filter: blur(100px);
-  z-index: 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1000px) {
-  #hero-section {
-    flex-direction: column;
-    gap: 40px;
-    padding: 100px 20px;
-  }
-
-  .projects-box {
-    width: 100%;
-  }
-}
-/* ===== Horizontal scroll area (smooth drag + scroll) ===== */
-.projects-scroll {
+/* ===== SLIDER ===== */
+.intro-right {
+  flex: 2;
   display: flex;
+  gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 25px;
   padding-bottom: 15px;
   scrollbar-width: thin;
   scrollbar-color: #0077ff #e0e0e0;
-  cursor: grab;
-  scroll-behavior: smooth;
 }
 
-.projects-scroll:active {
-  cursor: grabbing;
+/* Custom scrollbar for WebKit browsers */
+.intro-right::-webkit-scrollbar {
+  height: 10px;
 }
 
-/* Hide scrollbar visually but keep it functional on desktop */
-.projects-scroll::-webkit-scrollbar {
-  height: 8px;
-}
-.projects-scroll::-webkit-scrollbar-thumb {
-  background: rgba(0, 119, 255, 0.6);
+.intro-right::-webkit-scrollbar-thumb {
+  background-color: #0077ff;
   border-radius: 8px;
 }
-.projects-scroll::-webkit-scrollbar-track {
+
+.intro-right::-webkit-scrollbar-track {
   background: #e0e0e0;
   border-radius: 8px;
 }
 
-/* Card styling */
-.project-card-mini {
+.project-slide {
   flex: 0 0 300px;
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: inherit;
   scroll-snap-align: start;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-.project-card-mini:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 24px rgba(0, 119, 255, 0.35);
+.project-slide:hover {
+  transform: translateY(-5px);
 }
 
-.project-mini-img {
+.slide-img {
   width: 100%;
   height: 180px;
   object-fit: cover;
@@ -1063,17 +1011,36 @@ html {
   border-top-right-radius: 16px;
 }
 
-.project-mini-text {
+.slide-text {
   padding: 15px;
 }
 
-.project-mini-text h3 {
+.slide-text h3 {
   font-size: 1.1rem;
   color: #0077ff;
   margin-bottom: 8px;
 }
 
-.project-mini-text p {
+.slide-text p {
   font-size: 0.95rem;
   color: #444;
 }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  #intro-section {
+    flex-direction: column;
+    padding: 60px 20px;
+  }
+
+  .intro-right {
+    flex: 1;
+    display: flex;
+    overflow-x: auto;
+  }
+
+  .project-slide {
+    flex: 0 0 80%;
+  }
+}
+
