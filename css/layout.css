@@ -746,7 +746,7 @@ html {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 80px 0;
+  padding: 10px 0;
   position: relative;
 }
 
