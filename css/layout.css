@@ -405,21 +405,21 @@ html {
 /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1600px) {
   #main-content {
-    margin: 70px 275px;
+    margin: 100px 275px;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and below) */
 @media only screen and (max-width: 1200px) {
   #main-content {
-    margin: 70px 175px;
+    margin: 100px 175px;
   }
 }
 
 /* Large devices (laptops/desktops, 1000px and below) */
 @media only screen and (max-width: 1000px) {
   #main-content {
-    margin: 70px 75px;
+    margin: 100px 75px;
   }
 }
 
