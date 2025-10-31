@@ -614,7 +614,6 @@ html {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at center, rgba(0, 119, 255, 0.15), transparent 60%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -624,8 +623,7 @@ html {
 }
 
 .study-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 119, 255, 0.159);
+  transform: translateY(-4px);
 }
 
 .study-header {
@@ -765,7 +763,6 @@ html {
   font-size: 1.8rem;
   font-weight: 700;
   color: #0077ff;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
