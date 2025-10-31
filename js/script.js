@@ -5,59 +5,35 @@ if (document.getElementById('my-work-link')) {
 }
 
 
-// 3D Carousel
+// Drag to scroll for horizontal carousel
 document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".carousel-track");
-  const cards = Array.from(document.querySelectorAll(".carousel-card"));
-  let currentIndex = 0;
-  let startX = 0;
-  let currentTranslate = 0;
-  let prevTranslate = 0;
-  let dragging = false;
+  const carousel = document.querySelector(".horizontal-carousel");
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-  const updateCarousel = () => {
-    cards.forEach((card, i) => {
-      const offset = (i - currentIndex) * 60; // spacing
-      card.style.transform = `translateX(${offset}%) scale(${i === currentIndex ? 1 : 0.8})`;
-      card.classList.toggle("active", i === currentIndex);
-    });
-  };
+  carousel.addEventListener("mousedown", (e) => {
+    isDown = true;
+    carousel.classList.add("dragging");
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
 
-  const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+  carousel.addEventListener("mouseleave", () => {
+    isDown = false;
+    carousel.classList.remove("dragging");
+  });
 
-  const startDrag = (e) => {
-    dragging = true;
-    startX = e.pageX || e.touches[0].pageX;
-    track.style.transition = "none";
-  };
+  carousel.addEventListener("mouseup", () => {
+    isDown = false;
+    carousel.classList.remove("dragging");
+  });
 
-  const moveDrag = (e) => {
-    if (!dragging) return;
-    const x = e.pageX || e.touches[0].pageX;
-    const dx = x - startX;
-    currentTranslate = prevTranslate + dx;
-    track.style.transform = `translateX(${currentTranslate}px)`;
-  };
-
-  const endDrag = () => {
-    dragging = false;
-    const moved = currentTranslate - prevTranslate;
-    if (moved < -50) currentIndex = clamp(currentIndex + 1, 0, cards.length - 1);
-    else if (moved > 50) currentIndex = clamp(currentIndex - 1, 0, cards.length - 1);
-    track.style.transition = "transform 0.4s ease";
-    track.style.transform = "translateX(0)";
-    prevTranslate = 0;
-    currentTranslate = 0;
-    updateCarousel();
-  };
-
-  track.addEventListener("mousedown", startDrag);
-  track.addEventListener("mousemove", moveDrag);
-  track.addEventListener("mouseup", endDrag);
-  track.addEventListener("mouseleave", endDrag);
-  track.addEventListener("touchstart", startDrag);
-  track.addEventListener("touchmove", moveDrag);
-  track.addEventListener("touchend", endDrag);
-
-  updateCarousel();
+  carousel.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 1.2; // scroll speed
+    carousel.scrollLeft = scrollLeft - walk;
+  });
 });

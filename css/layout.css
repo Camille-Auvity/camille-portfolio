@@ -1030,69 +1030,65 @@ html {
 }
 
 
-/* ===== 3D CAROUSEL ===== */
-.carousel-3d {
-  width: 100%;
-  max-width: 900px;
-  perspective: 1200px;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-}
-
-.carousel-track {
+/* ===== HORIZONTAL CAROUSEL ===== */
+.horizontal-carousel {
   display: flex;
-  gap: 40px;
-  transform-style: preserve-3d;
-  transition: transform 0.4s ease;
-  cursor: grab;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 30px;
+  padding: 20px;
+  -webkit-overflow-scrolling: touch;
 }
 
-.carousel-card {
-  flex: 0 0 60%;
+.horizontal-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.horizontal-carousel::-webkit-scrollbar-thumb {
+  background: rgba(0, 119, 255, 0.4);
+  border-radius: 10px;
+}
+
+.carousel-item {
+  flex: 0 0 80%;
   max-width: 500px;
   background: white;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   padding: 20px;
   text-align: center;
-  transform: scale(0.8);
-  opacity: 0.6;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.carousel-card.active {
-  transform: scale(1) translateZ(80px);
-  opacity: 1;
+.carousel-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 119, 255, 0.3);
 }
 
-.carousel-card img {
+.carousel-item img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
   border-radius: 12px;
   margin-bottom: 15px;
-  object-fit: cover;
-  height: 200px;
 }
 
-.carousel-card h4 {
-  font-size: 1.2rem;
+.carousel-item h4 {
   color: #0077ff;
-  margin-bottom: 8px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
-.carousel-card p {
-  font-size: 0.95rem;
+.carousel-item p {
   color: #333;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
-/* Drag cursor */
-.carousel-track:active {
-  cursor: grabbing;
-}
-
-/* Responsive */
 @media (max-width: 800px) {
-  .carousel-card {
-    flex: 0 0 80%;
+  .carousel-item {
+    flex: 0 0 90%;
   }
 }
