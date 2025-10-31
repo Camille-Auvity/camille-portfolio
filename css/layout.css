@@ -960,6 +960,19 @@ html {
   font-weight: 500;
 }
 
+/* --- Recent Project Title --- */
+.recent-project-title {
+  text-align: center;
+  color: #0077ff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 15px rgba(0, 119, 255, 0.3);
+}
+
+
 /* ===== SLIDER ===== */
 .intro-right {
   flex: 2;
