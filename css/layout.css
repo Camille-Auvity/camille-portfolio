@@ -903,17 +903,6 @@ html {
   border-radius: 2px;
 }
 
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 #about-section > .subheader-text,
 #studies-section > .subheader-text,
 #internships-section > .subheader-text,
@@ -960,14 +949,6 @@ html {
   font-weight: 500;
 }
 
-/* 
-#intro-section {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-} --- Intro layout --- */
 
 /* Container for title + carousel */
 .intro-right-container {
@@ -975,18 +956,6 @@ html {
   flex-direction: column;
   align-items: center;
   flex: 1;
-}
-
-/* Title styling */
-.recent-project-title {
-  text-align: center;
-  color: #0077ff;
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 25px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  text-shadow: 0 2px 15px rgba(0, 119, 255, 0.3);
 }
 
 /* --- Recent Projects Carousel --- */
@@ -1003,8 +972,8 @@ html {
 
 .recent-projects-swiper {
   width: 100%;
-  max-width: 700px;
-  padding-bottom: 50px;
+  max-width: 900px;
+  padding-bottom: 30px;
 }
 
 .project-slide {
@@ -1030,7 +999,7 @@ html {
 .slide-text {
   padding: 15px;
   text-align: center;
-  color: white;
+  color: #0077ff;
 }
 
 .swiper-button-next,
