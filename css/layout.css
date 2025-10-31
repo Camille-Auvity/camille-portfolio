@@ -924,7 +924,7 @@ html {
 }
 
 .intro-left {
-  flex: 1;
+  flex: 2;
   text-align: center;
 }
 
@@ -955,7 +955,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1; 
+  flex: 3; 
 }
 
 /* --- Recent Projects Carousel --- */
