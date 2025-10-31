@@ -925,21 +925,22 @@ html {
 }
 
 
-/* ===== HERO SECTION WITH FLOATING PROFILE ===== */
+/* ===== HERO SECTION WITH FLOATING PROFILE (wider layout) ===== */
 #hero-section {
   position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 140px 80px 100px;
+  min-height: 500px;
+  padding: 160px 100px 120px 100px; /* plus large sur les côtés */
   background: linear-gradient(135deg, #f9fbff, #edf3ff);
-  overflow: hidden;
+  overflow: visible; /* pour laisser dépasser la photo */
 }
 
-/* ===== Floating profile (outside box) ===== */
+/* ===== Floating profile ===== */
 .profile-floating {
   position: absolute;
-  left: 8%;
+  left: 5%; /* plus près du bord */
   top: 50%;
   transform: translateY(-50%);
   text-align: center;
@@ -947,23 +948,23 @@ html {
 }
 
 .profile-photo {
-  width: 200px;
-  height: 200px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
-  border: 4px solid white;
-  box-shadow: 0 0 30px rgba(0, 119, 255, 0.3);
+  border: 5px solid white;
+  box-shadow: 0 0 40px rgba(0, 119, 255, 0.3);
   object-fit: cover;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-photo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(0, 119, 255, 0.45);
+  transform: scale(1.06);
+  box-shadow: 0 0 55px rgba(0, 119, 255, 0.45);
 }
 
 .profile-name {
-  margin-top: 18px;
-  font-size: 2rem;
+  margin-top: 20px;
+  font-size: 2.2rem;
   font-weight: 700;
   background: linear-gradient(90deg, #0077ff, #00c6ff);
   -webkit-background-clip: text;
@@ -971,17 +972,18 @@ html {
 }
 
 .profile-role {
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: #555;
 }
 
-/* ===== Projects box ===== */
+/* ===== Projects box (moved further right) ===== */
 .projects-box {
   background: white;
-  border-radius: 24px;
+  border-radius: 28px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
-  padding: 50px 50px 40px;
-  width: 70%;
+  padding: 60px 60px 50px;
+  width: 75%; /* plus large */
+  margin-left: auto;
   z-index: 2;
   position: relative;
 }
@@ -989,10 +991,10 @@ html {
 .projects-box::before {
   content: "";
   position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 300px;
-  height: 300px;
+  top: -100px;
+  right: -100px;
+  width: 350px;
+  height: 350px;
   background: radial-gradient(circle, rgba(0,119,255,0.15), transparent 70%);
   filter: blur(100px);
   z-index: 0;
@@ -1000,12 +1002,12 @@ html {
 
 /* ===== Title ===== */
 .recent-title {
-  font-size: 1.9rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #0077ff;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   position: relative;
 }
 
@@ -1014,7 +1016,7 @@ html {
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: 60%;
+  width: 65%;
   height: 3px;
   background: linear-gradient(90deg, #00bfff, #0077ff);
   border-radius: 2px;
@@ -1023,7 +1025,7 @@ html {
 
 @keyframes titleGlow {
   from { opacity: 0.5; width: 50%; }
-  to { opacity: 1; width: 70%; }
+  to { opacity: 1; width: 75%; }
 }
 
 /* ===== Horizontal projects scroll ===== */
@@ -1053,7 +1055,7 @@ html {
 
 /* ===== Project cards ===== */
 .project-card-mini {
-  flex: 0 0 280px;
+  flex: 0 0 300px;
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -1070,7 +1072,7 @@ html {
 
 .project-mini-img {
   width: 100%;
-  height: 160px;
+  height: 180px;
   object-fit: cover;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -1087,7 +1089,7 @@ html {
 }
 
 .project-mini-text p {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #444;
 }
 
