@@ -955,7 +955,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 2; 
+  flex: 1; 
 }
 
 /* --- Recent Projects Carousel --- */
