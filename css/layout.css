@@ -1212,8 +1212,8 @@ html {
   }
 }
 
-/*.carousel-item-link {
+.carousel-item-link {
   cursor: pointer;
   text-decoration: none;
   color: inherit; /* Pour éviter que le texte change de couleur 
-} */
+}
