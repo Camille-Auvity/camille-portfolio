@@ -1219,17 +1219,33 @@ html {
 }
 
 .lang-button {
-  border: 2px solid #0077ff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(0, 119, 255, 0.4);
   color: #0077ff;
-  background: transparent;
-  border-radius: 25px;
-  padding: 6px 14px;
   font-weight: 600;
+  font-size: 0.95rem;
   text-decoration: none;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 119, 255, 0.15);
   transition: all 0.3s ease;
 }
 
 .lang-button:hover {
-  background: #0077ff;
+  background: rgba(0, 119, 255, 0.25);
   color: white;
+  border-color: #0077ff;
+  box-shadow: 0 6px 20px rgba(0, 119, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.lang-flag {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  overflow: hidden;
 }
