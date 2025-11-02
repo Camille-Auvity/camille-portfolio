@@ -1217,3 +1217,19 @@ html {
   text-decoration: none;
   color: inherit; 
 }
+
+.lang-button {
+  border: 2px solid #0077ff;
+  color: #0077ff;
+  background: transparent;
+  border-radius: 25px;
+  padding: 6px 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.lang-button:hover {
+  background: #0077ff;
+  color: white;
+}
