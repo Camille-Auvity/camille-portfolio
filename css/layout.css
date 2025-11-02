@@ -1399,7 +1399,7 @@ html {
 .studies-container {
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: flex-start; /* ✅ les cartes commencent en haut, hauteur variable */
   flex-wrap: wrap;
   gap: 40px;
   max-width: 1300px;
@@ -1418,7 +1418,6 @@ html {
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .study-card:hover {
