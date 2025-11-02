@@ -1511,7 +1511,7 @@ html {
 /* ===== INTERNSHIP / EXPERIENCE CARDS ===== */
 #internships-section {
   background: white;
-  padding: 100px 80px;
+  padding: 10px 80px;
 }
 
 .internships-container {
@@ -1552,8 +1552,8 @@ html {
 }
 
 .internship-logo {
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   border-radius: 10px;
 }
