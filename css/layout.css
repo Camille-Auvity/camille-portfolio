@@ -1340,3 +1340,52 @@ html {
     max-width: 600px;
   }
 }
+
+
+/* ===== STUDIES - 3 CARDS INLINE (override des règles globales) ===== */
+.studies-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  flex-wrap: nowrap; /* sur desktop on ne wrap pas */
+  padding: 40px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Forcer les cards à se comporter comme des flex items côte-à-côte */
+.studies-container .study-card {
+  margin: 0;               /* annule le margin: auto précédent */
+  max-width: none;         /* annule le max-width précédent */
+  flex: 1 1 30%;           /* occupe ~30% chacune, s'adapte */
+  min-width: 300px;        /* évite qu'elles deviennent trop petites */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  background: white;
+  padding: 25px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Si tu veux que toutes aient la même hauteur visuelle */
+.studies-container .study-card .study-header,
+.studies-container .study-card .study-courses {
+  /* pas nécessaire, mais garde la structure claire */
+}
+
+/* responsive : passer en colonne sur écrans plus petits */
+@media (max-width: 1000px) {
+  .studies-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 30px;
+    gap: 24px;
+  }
+
+  .studies-container .study-card {
+    width: 100%;
+    max-width: 720px;
+    flex: none;
+  }
+}
