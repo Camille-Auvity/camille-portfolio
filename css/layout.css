@@ -1631,9 +1631,7 @@ html {
 
 /* Conteneur pour limiter la largeur et centrer le contenu comme les autres sections */
 #extra-info-section {
-  padding-top: 50px; /* Moins d'espace pour un style 'sobre' */
   padding-bottom: 50px;
-  background-color: #f8f8f8; /* Un léger gris clair pour séparer de la section "About Me" */
 }
 
 /* Grille pour disposer les 3 éléments sur la même ligne (ou empilés sur mobile) */
@@ -1692,4 +1690,80 @@ html {
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+
+/* layout.css (À ajouter à la fin du fichier) */
+
+/* ===== EXTRA INFO SECTION (Style sobre et compact) ===== */
+#extra-info-section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: #fcfcfc; /* Très léger pour la sobriété */
+  /* Utilise les propriétés fullwidth-section pour sortir des marges */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.extra-info-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 80px; /* Aligner avec les autres sections */
+}
+
+/* Grille pour disposer les 3 éléments sur la même ligne (ou empilés sur mobile) */
+.extra-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 colonnes flexibles */
+  gap: 30px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+/* Style de chaque carte d'information */
+.extra-info-item {
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(0, 119, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  height: 100%; /* S'assurer qu'elles ont la même hauteur */
+}
+
+/* Effet discret au survol */
+.extra-info-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 119, 255, 0.1);
+  border-color: #0077ff;
+}
+
+/* Titre de l'élément d'information */
+.extra-info-title {
+  font-size: 1.1rem;
+  color: #111; /* Titre sombre pour un style "sobre" */
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+  border-bottom: 2px dotted rgba(0, 119, 255, 0.2);
+  padding-bottom: 5px;
+}
+
+/* Texte descriptif */
+.extra-info-text {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 900px) {
+  .extra-info-container {
+    padding: 0 40px;
+  }
 }
