@@ -1625,3 +1625,71 @@ html {
     text-align: left;
   }
 }
+
+
+/* ===== INFORMATIONS SUPPLÉMENTAIRES (style sobre) ===== */
+
+/* Conteneur pour limiter la largeur et centrer le contenu comme les autres sections */
+#extra-info-section {
+  padding-top: 50px; /* Moins d'espace pour un style 'sobre' */
+  padding-bottom: 50px;
+  background-color: #f8f8f8; /* Un léger gris clair pour séparer de la section "About Me" */
+}
+
+/* Grille pour disposer les 3 éléments sur la même ligne (ou empilés sur mobile) */
+.extra-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 3 colonnes flexibles */
+  gap: 30px;
+  margin-top: 30px;
+}
+
+/* Style de chaque carte d'information */
+.extra-info-item {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet discret au survol */
+.extra-info-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 119, 255, 0.1);
+  border-color: #0077ff;
+}
+
+/* Titre de l'élément d'information */
+.extra-info-title {
+  font-size: 1.1rem;
+  color: #0077ff; /* Reprise de la couleur principale */
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Texte descriptif */
+.extra-info-text {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Ajustement pour les titres de section (déjà présent mais pour rappel) */
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #111;
+  margin-bottom: 40px;
+}
+
+/* Conteneur pour centrer le contenu et lui donner une marge intérieure maximale (similaire à vos autres sections) */
+.content-box-mini {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
