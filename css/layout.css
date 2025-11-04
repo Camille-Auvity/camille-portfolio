@@ -1699,7 +1699,7 @@ html {
 #extra-info-section {
   padding-top: 50px;
   padding-bottom: 50px;
-  background: #fcfcfc; /* Très léger pour la sobriété */
+  background: #ffffff; 
   /* Utilise les propriétés fullwidth-section pour sortir des marges */
   width: 100vw;
   position: relative;
@@ -1770,7 +1770,7 @@ html {
 
 /* ===== EXTRA INFO SECTION (Style plein largeur, titre à gauche) ===== */
 #extra-info-section.fullwidth-section {
-  padding: 30px 0;
+  padding: 0px 0;
 }
 
 .extra-info-wrapper {
@@ -1781,7 +1781,7 @@ html {
   display: grid;
   grid-template-columns: 250px 1fr; /* Titre (colonne fixe) | Contenu (reste) */
   gap: 40px;
-  align-items: start;
+  align-items: center;
 }
 
 /* OVERRIDE pour le titre de la section */
