@@ -1767,3 +1767,106 @@ html {
     padding: 0 40px;
   }
 }
+
+/* ===== EXTRA INFO SECTION (Style plein largeur, titre à gauche) ===== */
+#extra-info-section.fullwidth-section {
+  padding: 30px 0;
+}
+
+.extra-info-wrapper {
+  /* Mise en page en 2 colonnes (Titre à gauche, Contenu à droite) */
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: grid;
+  grid-template-columns: 250px 1fr; /* Titre (colonne fixe) | Contenu (reste) */
+  gap: 40px;
+  align-items: start;
+}
+
+/* OVERRIDE pour le titre de la section */
+.extra-info-header-col .subheader-text {
+  text-align: left;
+  margin: 0; 
+  margin-top: 10px; 
+  font-size: 1.8rem; /* Taille du titre */
+}
+
+/* Suppression de la barre bleue centrée par défaut */
+.extra-info-header-col .subheader-text::after {
+  display: none;
+}
+
+
+/* Grille pour disposer les 3 éléments */
+.extra-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 30px;
+}
+
+/* Style de chaque carte d'information (sobriété) */
+.extra-info-item {
+  padding: 25px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 119, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  height: 100%; 
+}
+
+/* Effet discret au survol */
+.extra-info-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 119, 255, 0.15);
+  border-color: #0077ff;
+}
+
+/* Titre de l'élément d'information */
+.extra-info-title {
+  font-size: 1.1rem;
+  color: #0077ff;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(0, 119, 255, 0.1); 
+  padding-bottom: 5px;
+}
+
+.extra-info-text {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Responsive pour mobile (redevient 1 colonne et le titre est centré) */
+@media (max-width: 900px) {
+  .extra-info-wrapper {
+    grid-template-columns: 1fr; /* 1 colonne */
+    padding: 0 40px;
+    gap: 20px;
+  }
+
+  .extra-info-header-col {
+      text-align: center;
+      width: 100%;
+  }
+
+  .extra-info-header-col .subheader-text {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+
+  /* Rétablir la barre bleue centrée sur mobile */
+  .extra-info-header-col .subheader-text::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    border-radius: 2px;
+  }
+}
