@@ -1880,6 +1880,7 @@ html {
   margin-bottom: 20px;
   padding-bottom: 5px;
   font-weight: 700;
+  text-align: center;
 }
 
 /* Grille pour disposer les 3 éléments sur la même ligne */
@@ -1916,6 +1917,7 @@ html {
   margin-top: 0;
   margin-bottom: 5px;
   font-weight: 600;
+  text-align: center;
 }
 
 .extra-info-text {
