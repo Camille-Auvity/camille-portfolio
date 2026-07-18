@@ -1415,7 +1415,7 @@ html {
   position: absolute;
   top: 6px;
   bottom: 6px;
-  left: 16px;
+  left: 252.5px;
   width: 3px;
   background: linear-gradient(180deg, #00c6ff, #0072ff);
   border-radius: 2px;
@@ -1424,15 +1424,16 @@ html {
 
 .timeline-item {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 210px 32px 1fr;
+  grid-template-areas: "identity track bubble";
   align-items: center;
-  gap: 28px;
+  column-gap: 28px;
 }
 
 /* ---- TRACK / DOT ---- */
 .timeline-track {
-  flex-shrink: 0;
-  width: 32px;
+  grid-area: track;
   display: flex;
   justify-content: center;
   z-index: 1;
@@ -1448,16 +1449,8 @@ html {
 }
 
 /* ---- IDENTITY (logo + school name) ---- */
-.timeline-row {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-}
-
 .timeline-identity {
-  flex-shrink: 0;
-  width: 210px;
+  grid-area: identity;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1479,7 +1472,7 @@ html {
 
 /* ---- BUBBLE ---- */
 .timeline-bubble {
-  flex: 1;
+  grid-area: bubble;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 20px;
   padding: 30px;
@@ -1555,14 +1548,21 @@ html {
     padding: 10px 20px;
   }
 
-  .timeline-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+  .education-timeline::before {
+    left: 16px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 32px 1fr;
+    grid-template-areas:
+      "track identity"
+      "track bubble";
+    align-items: start;
+    column-gap: 12px;
+    row-gap: 14px;
   }
 
   .timeline-identity {
-    width: auto;
     flex-direction: row;
     align-items: center;
     gap: 12px;
