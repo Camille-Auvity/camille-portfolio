@@ -29,9 +29,9 @@ a.icon-link:hover {
 
 a.button {
   padding: 8px 16px;
-  border: 3px solid #141414;
+  border: 3px solid var(--c-text-1);
   border-radius: 50px;
-  color: black;
+  color: var(--c-text-1);
   text-decoration: none;
   width: fit-content;
   display: flex;
@@ -60,7 +60,7 @@ a.button:hover {
 /* Link Styling */
 a.no-underline {
   text-decoration: none;
-  color: black
+  color: var(--c-text-1);
 }
 
 a.no-underline:hover {
