@@ -78,6 +78,115 @@ if (settingsToggleBtn && settingsPanel) {
   });
 }
 
+// ETF ticker banner
+// Get a free API key (instant, no credit card) at https://finnhub.io/register
+// and paste it below. Free tier: 60 calls/minute, plenty for a portfolio site.
+const FINNHUB_API_KEY = 'd9e81ohr01qh241atm8gd9e81ohr01qh241atm90';
+
+const etfTickerTrack = document.getElementById('etf-ticker-track');
+if (etfTickerTrack) {
+  const isFrenchPage = location.pathname.includes('_fr');
+  const etfList = [
+    { symbol: 'SPY', label: 'S&P 500' },
+    { symbol: 'QQQ', label: 'Nasdaq 100' },
+    { symbol: 'EFA', label: 'MSCI EAFE' },
+    { symbol: 'EWQ', label: 'MSCI France' },
+    { symbol: 'GLD', label: isFrenchPage ? 'Or' : 'Gold' },
+    { symbol: 'TLT', label: 'US Treasury 20y+' },
+  ];
+
+  const CACHE_KEY = 'etfTickerData';
+  const CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
+  const REFRESH_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+
+  const escapeHtml = (str) =>
+    String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  function renderTicker(items) {
+    etfTickerTrack.innerHTML = '';
+    const buildSet = () => {
+      const frag = document.createDocumentFragment();
+      items.forEach((item) => {
+        const el = document.createElement('span');
+        el.className = 'etf-ticker-item';
+        const isUp = item.change >= 0;
+        el.innerHTML = `
+          <span class="etf-symbol">${escapeHtml(item.symbol)}</span>
+          <span class="etf-label">${escapeHtml(item.label)}</span>
+          <span class="etf-price">${item.price != null ? item.price.toFixed(2) : '—'}</span>
+          <span class="etf-change ${isUp ? 'etf-up' : 'etf-down'}">${isUp ? '▲' : '▼'} ${Math.abs(item.change).toFixed(2)}%</span>
+        `;
+        frag.appendChild(el);
+      });
+      return frag;
+    };
+    etfTickerTrack.appendChild(buildSet());
+    etfTickerTrack.appendChild(buildSet()); // duplicate for a seamless scroll loop
+  }
+
+  function renderMessage(message) {
+    etfTickerTrack.innerHTML = `<span class="etf-ticker-item etf-ticker-message">${escapeHtml(message)}</span>`;
+  }
+
+  async function fetchEtfData() {
+    if (!FINNHUB_API_KEY || FINNHUB_API_KEY === 'YOUR_FINNHUB_API_KEY') return null;
+    try {
+      const results = await Promise.all(
+        etfList.map(async (item) => {
+          const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${item.symbol}&token=${FINNHUB_API_KEY}`);
+          if (!res.ok) throw new Error('bad response');
+          const json = await res.json();
+          return { ...item, price: typeof json.c === 'number' && json.c > 0 ? json.c : null, change: json.dp || 0 };
+        })
+      );
+      return results.some((r) => r.price != null) ? results : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function readCache() {
+    try {
+      const raw = localStorage.getItem(CACHE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function writeCache(data) {
+    try {
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
+    } catch (e) {
+      /* ignore quota/storage errors */
+    }
+  }
+
+  async function loadTicker({ forceRefresh = false } = {}) {
+    const cached = readCache();
+    if (!forceRefresh && cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
+      renderTicker(cached.data);
+      return;
+    }
+
+    const fresh = await fetchEtfData();
+    if (fresh) {
+      writeCache(fresh);
+      renderTicker(fresh);
+    } else if (cached) {
+      renderTicker(cached.data); // stale but better than nothing
+    } else {
+      renderMessage(isFrenchPage ? 'Données de marché indisponibles pour le moment' : 'Market data unavailable right now');
+    }
+  }
+
+  loadTicker();
+
+  setInterval(() => {
+    if (!document.hidden) loadTicker({ forceRefresh: true });
+  }, REFRESH_INTERVAL_MS);
+}
+
 if (document.getElementById('my-work-link')) {
   document.getElementById('my-work-link').addEventListener('click', () => {
     document.getElementById('my-work-section').scrollIntoView({behavior: "smooth"})

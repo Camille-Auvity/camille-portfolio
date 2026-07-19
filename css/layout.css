@@ -45,9 +45,17 @@
   --surface-a60: rgba(255, 255, 255, 0.6);
   --surface-a70: rgba(255, 255, 255, 0.7);
   --surface-a80: rgba(255, 255, 255, 0.8);
+
+  /* ETF ticker banner (unchanged between light/dark) */
+  --etf-ticker-height: 34px;
+  --c-up: #10b981;
+  --c-down: #f43f5e;
 }
 
 :root[data-theme="dark"] {
+  --c-up: #34d399;
+  --c-down: #fb7185;
+
   --c-text-1: #f5f6f8;
   --c-text-2: #e4e6ea;
   --c-text-3: #d3d6dc;
@@ -106,7 +114,7 @@ body * {
 /* ===== NAVBAR STYLÉE ===== */
 .navbar {
   position: sticky;          /* reste visible en scrollant */
-  top: 0;
+  top: var(--etf-ticker-height, 34px);
   width: 100%;
   height: 80px;
   background: var(--surface-a80); /* fond semi-transparent */
@@ -118,6 +126,94 @@ body * {
   box-shadow: 0 4px 20px var(--shadow-08);
   z-index: 70;
   transition: background 0.3s ease;
+}
+
+/* ===== ETF TICKER BANNER ===== */
+.etf-ticker {
+  position: sticky;
+  top: 0;
+  z-index: 80;
+  height: var(--etf-ticker-height);
+  overflow: hidden;
+  background: var(--c-text-1);
+  border-bottom: 1px solid var(--c-border-soft);
+  display: flex;
+  align-items: center;
+}
+
+.etf-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-left: 24px;
+  white-space: nowrap;
+  animation: etf-ticker-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.etf-ticker:hover .etf-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes etf-ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.etf-ticker-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--c-surface);
+}
+
+.etf-symbol {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.etf-label {
+  opacity: 0.6;
+  font-size: 11.5px;
+}
+
+.etf-price {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.9;
+}
+
+.etf-change {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.etf-change.etf-up {
+  color: var(--c-up);
+}
+
+.etf-change.etf-down {
+  color: var(--c-down);
+}
+
+.etf-ticker-message {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+@media only screen and (max-width: 800px) {
+  :root {
+    --etf-ticker-height: 28px;
+  }
+
+  .etf-ticker-item {
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .etf-label {
+    display: none;
+  }
 }
 
 /* Logo / titre à gauche */
