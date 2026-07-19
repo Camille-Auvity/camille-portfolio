@@ -46,10 +46,12 @@
   --surface-a70: rgba(255, 255, 255, 0.7);
   --surface-a80: rgba(255, 255, 255, 0.8);
 
-  /* ETF ticker banner (unchanged between light/dark) */
+  /* ETF ticker banner (theme-invariant: always a dark tape bar) */
   --etf-ticker-height: 34px;
   --c-up: #10b981;
   --c-down: #f43f5e;
+  --etf-ticker-bg: #111;
+  --etf-ticker-text: #ffffff;
 }
 
 :root[data-theme="dark"] {
@@ -85,6 +87,68 @@
   --surface-a60: rgba(30, 33, 41, 0.6);
   --surface-a70: rgba(30, 33, 41, 0.7);
   --surface-a80: rgba(20, 22, 28, 0.85);
+}
+
+/* ===== TERMINAL MODE (Bloomberg-inspired) ===== */
+:root[data-theme="terminal"] {
+  --c-accent: #ff9500;
+  --c-accent-2: #ffb547;
+  --c-accent-3: #ff8000;
+  --c-accent-soft: rgba(255, 149, 0, 0.7);
+  --c-accent-a08: rgba(255, 149, 0, 0.08);
+  --c-accent-a10: rgba(255, 149, 0, 0.1);
+  --c-accent-a15: rgba(255, 149, 0, 0.15);
+  --c-accent-a20: rgba(255, 149, 0, 0.2);
+  --c-accent-a25: rgba(255, 149, 0, 0.25);
+  --c-accent-a30: rgba(255, 149, 0, 0.3);
+  --c-accent-a40: rgba(255, 149, 0, 0.4);
+
+  --c-up: #00e396;
+  --c-down: #ff3b30;
+
+  --c-text-1: #fff3e0;
+  --c-text-2: #ffdca8;
+  --c-text-3: #f5c98a;
+  --c-text-4: #dab27c;
+  --c-text-5: #c2a077;
+  --c-text-6: #a68d6e;
+  --c-text-7: #8a7862;
+
+  --c-surface: #0a0a0a;
+  --c-bg-soft-1: #0f0d0a;
+  --c-bg-soft-2: #131110;
+  --c-bg-soft-3: #171310;
+  --c-bg-soft-4: #1c1712;
+  --c-border-soft: #33281a;
+  --c-border-light: #3d301e;
+
+  --shadow-03: rgba(0, 0, 0, 0.3);
+  --shadow-05: rgba(0, 0, 0, 0.4);
+  --shadow-08: rgba(0, 0, 0, 0.45);
+  --shadow-10: rgba(0, 0, 0, 0.5);
+  --shadow-12: rgba(0, 0, 0, 0.55);
+  --shadow-15: rgba(0, 0, 0, 0.6);
+
+  --surface-a08: rgba(255, 149, 0, 0.05);
+  --surface-a10: rgba(255, 149, 0, 0.06);
+  --surface-a25: rgba(255, 149, 0, 0.1);
+  --surface-a60: rgba(10, 8, 6, 0.6);
+  --surface-a70: rgba(10, 8, 6, 0.75);
+  --surface-a80: rgba(8, 7, 5, 0.9);
+
+  --etf-ticker-bg: #000000;
+  --etf-ticker-text: #ff9500;
+}
+
+[data-theme="terminal"] body,
+[data-theme="terminal"] .etf-ticker,
+[data-theme="terminal"] .etf-price,
+[data-theme="terminal"] .etf-symbol {
+  font-family: "Courier New", "SFMono-Regular", Consolas, Menlo, monospace;
+}
+
+[data-theme="terminal"] .settings-wrapper {
+  display: none;
 }
 
 * {
@@ -135,7 +199,7 @@ body * {
   z-index: 80;
   height: var(--etf-ticker-height);
   overflow: hidden;
-  background: var(--c-text-1);
+  background: var(--etf-ticker-bg);
   border-bottom: 1px solid var(--c-border-soft);
   display: flex;
   align-items: center;
@@ -165,12 +229,16 @@ body * {
   align-items: baseline;
   gap: 8px;
   font-size: 12.5px;
-  color: var(--c-surface);
+  color: var(--etf-ticker-text);
 }
 
 .etf-symbol {
   font-weight: 700;
   letter-spacing: 0.3px;
+}
+
+[data-theme="terminal"] .etf-symbol {
+  text-shadow: 0 0 8px rgba(255, 149, 0, 0.55);
 }
 
 .etf-label {
@@ -1463,7 +1531,8 @@ html {
   height: 20px;
 }
 
-.theme-icon-moon {
+.theme-icon-moon,
+.theme-icon-terminal {
   display: none;
 }
 
@@ -1472,6 +1541,15 @@ html {
 }
 
 [data-theme="dark"] .theme-icon-moon {
+  display: block;
+}
+
+[data-theme="terminal"] .theme-icon-sun,
+[data-theme="terminal"] .theme-icon-moon {
+  display: none;
+}
+
+[data-theme="terminal"] .theme-icon-terminal {
   display: block;
 }
 

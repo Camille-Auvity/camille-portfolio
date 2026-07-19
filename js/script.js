@@ -1,15 +1,36 @@
-// Dark mode toggle
+// Theme toggle: cycles light -> dark -> terminal -> light
+const THEME_ORDER = ['light', 'dark', 'terminal'];
+const ACCENT_VARS = [
+  '--c-accent', '--c-accent-2', '--c-accent-3', '--c-accent-soft',
+  '--c-accent-a08', '--c-accent-a10', '--c-accent-a15', '--c-accent-a20',
+  '--c-accent-a25', '--c-accent-a30', '--c-accent-a40',
+];
+
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  localStorage.setItem('theme', theme);
+
+  const root = document.documentElement.style;
+  if (theme === 'terminal') {
+    // Let the terminal theme's own CSS-defined orange accent show through
+    // instead of any custom accent color the user previously picked.
+    ACCENT_VARS.forEach((v) => root.removeProperty(v));
+  } else {
+    const savedAccent = localStorage.getItem('accent');
+    if (savedAccent) applyAccent(savedAccent);
+  }
+}
+
 const themeToggleBtn = document.getElementById('theme-toggle');
 if (themeToggleBtn) {
   themeToggleBtn.addEventListener('click', () => {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-    }
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = THEME_ORDER[(THEME_ORDER.indexOf(current) + 1) % THEME_ORDER.length];
+    applyTheme(next);
   });
 }
 

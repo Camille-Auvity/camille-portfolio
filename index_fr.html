@@ -10,7 +10,7 @@
       (function () {
         var stored = localStorage.getItem('theme');
         var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        if (theme === 'dark' || theme === 'terminal') document.documentElement.setAttribute('data-theme', theme);
 
         var accentPresets = {
           blue:   { accent: '#0077ff', accent2: '#00c6ff', accent3: '#0072ff', rgb: '0, 119, 255' },
@@ -20,7 +20,7 @@
           purple: { accent: '#7c3aed', accent2: '#a78bfa', accent3: '#8b5cf6', rgb: '124, 58, 237' }
         };
         var accentKey = localStorage.getItem('accent');
-        if (accentKey && accentPresets[accentKey]) {
+        if (theme !== 'terminal' && accentKey && accentPresets[accentKey]) {
           var p = accentPresets[accentKey];
           var root = document.documentElement.style;
           root.setProperty('--c-accent', p.accent);
@@ -37,10 +37,10 @@
         }
       })();
     </script>
-		<link rel="stylesheet" href="./css/layout.css?v=3">
+		<link rel="stylesheet" href="./css/layout.css?v=4">
     <link rel="stylesheet" href="./css/typography.css">
     <link rel="stylesheet" href="./css/utilities.css?v=2">
-		<script defer src="./js/script.js?v=3"></script>
+		<script defer src="./js/script.js?v=4"></script>
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Swiper JS -->
@@ -70,7 +70,7 @@
         <img src="./assets/icons/uk-flag.svg" alt="English" class="lang-flag">
         English
         </a>
-        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer en mode sombre">
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Basculer entre mode sombre et mode terminal">
           <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -84,6 +84,11 @@
           </svg>
           <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="theme-icon theme-icon-terminal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <polyline points="6 9 10 12 6 15"></polyline>
+            <line x1="12" y1="15" x2="16" y2="15"></line>
           </svg>
         </button>
         <div class="settings-wrapper">
