@@ -150,7 +150,7 @@
 /* ===== TERMINAL CLI EASTER EGG (only shown in Terminal mode) ===== */
 .cli-section {
   display: none;
-  padding: 0 30px 60px;
+  padding: 50px 30px 60px;
 }
 
 [data-theme="terminal"] .cli-section {
