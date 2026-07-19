@@ -147,10 +147,6 @@
   font-family: "Courier New", "SFMono-Regular", Consolas, Menlo, monospace;
 }
 
-[data-theme="terminal"] .settings-wrapper {
-  display: none;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -1531,25 +1527,17 @@ html {
   height: 20px;
 }
 
-.theme-icon-moon,
-.theme-icon-terminal {
+.theme-icon-moon {
   display: none;
 }
 
-[data-theme="dark"] .theme-icon-sun {
+[data-theme="dark"] .theme-icon-sun,
+[data-theme="terminal"] .theme-icon-sun {
   display: none;
 }
 
-[data-theme="dark"] .theme-icon-moon {
-  display: block;
-}
-
-[data-theme="terminal"] .theme-icon-sun,
+[data-theme="dark"] .theme-icon-moon,
 [data-theme="terminal"] .theme-icon-moon {
-  display: none;
-}
-
-[data-theme="terminal"] .theme-icon-terminal {
   display: block;
 }
 
@@ -1609,6 +1597,19 @@ html {
 
 .accent-swatch.active {
   box-shadow: 0 0 0 2px var(--c-surface), 0 0 0 4px var(--swatch-color);
+}
+
+.accent-swatch-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--c-border-soft);
+  margin: 0 2px;
+}
+
+/* Bloomberg terminal mode: a distinct split black/orange "nuance"
+   instead of a flat color, to signal it's a full theme, not just an accent. */
+.accent-swatch-terminal {
+  background: linear-gradient(135deg, #0a0a0a 50%, #ff9500 50%);
 }
 
 

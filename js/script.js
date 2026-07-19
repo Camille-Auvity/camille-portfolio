@@ -1,10 +1,22 @@
-// Theme toggle: cycles light -> dark -> terminal -> light
-const THEME_ORDER = ['light', 'dark', 'terminal'];
+// Theme handling: the day/night button only ever switches light <-> dark.
+// The Bloomberg "terminal" theme is a special option living inside the
+// settings panel (next to the accent swatches), not in this button's cycle.
 const ACCENT_VARS = [
   '--c-accent', '--c-accent-2', '--c-accent-3', '--c-accent-soft',
   '--c-accent-a08', '--c-accent-a10', '--c-accent-a15', '--c-accent-a20',
   '--c-accent-a25', '--c-accent-a30', '--c-accent-a40',
 ];
+
+function refreshActiveSwatch() {
+  const panel = document.getElementById('settings-panel');
+  if (!panel) return;
+  const key = document.documentElement.getAttribute('data-theme') === 'terminal'
+    ? 'terminal'
+    : (localStorage.getItem('accent') || 'blue');
+  panel.querySelectorAll('.accent-swatch').forEach((sw) => {
+    sw.classList.toggle('active', sw.dataset.accent === key);
+  });
+}
 
 function applyTheme(theme) {
   if (theme === 'light') {
@@ -13,6 +25,11 @@ function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
   }
   localStorage.setItem('theme', theme);
+  if (theme !== 'terminal') {
+    // Remember the last "real" light/dark state so we can restore it
+    // if the user picks a normal accent color while terminal mode is on.
+    localStorage.setItem('themeBeforeTerminal', theme);
+  }
 
   const root = document.documentElement.style;
   if (theme === 'terminal') {
@@ -23,14 +40,14 @@ function applyTheme(theme) {
     const savedAccent = localStorage.getItem('accent');
     if (savedAccent) applyAccent(savedAccent);
   }
+  refreshActiveSwatch();
 }
 
 const themeToggleBtn = document.getElementById('theme-toggle');
 if (themeToggleBtn) {
   themeToggleBtn.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme') || 'light';
-    const next = THEME_ORDER[(THEME_ORDER.indexOf(current) + 1) % THEME_ORDER.length];
-    applyTheme(next);
+    applyTheme(current === 'dark' ? 'light' : 'dark');
   });
 }
 
@@ -64,11 +81,7 @@ const settingsPanel = document.getElementById('settings-panel');
 if (settingsToggleBtn && settingsPanel) {
   const swatches = settingsPanel.querySelectorAll('.accent-swatch');
 
-  const setActiveSwatch = (key) => {
-    swatches.forEach((sw) => sw.classList.toggle('active', sw.dataset.accent === key));
-  };
-
-  setActiveSwatch(localStorage.getItem('accent') || 'blue');
+  refreshActiveSwatch();
 
   const closePanel = () => {
     settingsPanel.classList.remove('open');
@@ -86,9 +99,18 @@ if (settingsToggleBtn && settingsPanel) {
   swatches.forEach((sw) => {
     sw.addEventListener('click', () => {
       const key = sw.dataset.accent;
-      applyAccent(key);
-      localStorage.setItem('accent', key);
-      setActiveSwatch(key);
+      if (key === 'terminal') {
+        applyTheme('terminal');
+      } else {
+        applyAccent(key);
+        localStorage.setItem('accent', key);
+        if (document.documentElement.getAttribute('data-theme') === 'terminal') {
+          // Picking a normal color while in terminal mode exits terminal mode.
+          applyTheme(localStorage.getItem('themeBeforeTerminal') || 'light');
+        } else {
+          refreshActiveSwatch();
+        }
+      }
     });
   });
 
