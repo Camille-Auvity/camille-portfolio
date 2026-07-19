@@ -238,6 +238,60 @@
   color: var(--c-text-6);
 }
 
+/* ===== SCROLL REVEAL (progressive enhancement fade-in) =====
+   Elements only start hidden once JS has confirmed the browser supports
+   IntersectionObserver AND the user has no "prefers-reduced-motion"
+   preference (see js-reveal-ready toggle in script.js). Without JS, or
+   with reduced motion, everything stays fully visible at all times. */
+html.js-reveal-ready .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+html.js-reveal-ready .reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== ETF SPARKLINE HOVER TOOLTIP =====
+   Rendered as a position:fixed tooltip appended to <body> by script.js
+   (so it is never clipped by .etf-ticker's overflow:hidden marquee). */
+.etf-spark-tooltip {
+  position: fixed;
+  z-index: 300;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 10px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-soft);
+  border-radius: 8px;
+  box-shadow: 0 12px 30px var(--shadow-15);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.etf-spark-caption {
+  font-size: 10px;
+  color: var(--c-text-5);
+}
+
+.etf-spark-line {
+  fill: none;
+  stroke-width: 1.6;
+}
+
+.etf-spark-line.etf-spark-up {
+  stroke: var(--c-up);
+}
+
+.etf-spark-line.etf-spark-down {
+  stroke: var(--c-down);
+}
+
 * {
   box-sizing: border-box;
 }

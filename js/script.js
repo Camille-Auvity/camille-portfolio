@@ -1,3 +1,31 @@
+// Scroll reveal (progressive enhancement fade-in on sections).
+// Only activated when IntersectionObserver exists and the user has no
+// "prefers-reduced-motion" preference. Otherwise sections stay fully
+// visible (no CSS hides them unless html.js-reveal-ready is present).
+(function setupScrollReveal() {
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion || !('IntersectionObserver' in window)) return;
+
+  document.documentElement.classList.add('js-reveal-ready');
+
+  const revealEls = document.querySelectorAll('.reveal-on-scroll');
+  if (!revealEls.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+  );
+
+  revealEls.forEach((el) => observer.observe(el));
+})();
+
 // Theme handling: the day/night button only ever switches light <-> dark.
 // The Bloomberg "terminal" theme is a special option living inside the
 // settings panel (next to the accent swatches), not in this button's cycle.
@@ -153,6 +181,7 @@ if (etfTickerTrack) {
         const el = document.createElement('span');
         el.className = 'etf-ticker-item';
         const isUp = item.change >= 0;
+        el.dataset.symbol = item.symbol;
         el.innerHTML = `
           <span class="etf-symbol">${escapeHtml(item.symbol)}</span>
           <span class="etf-label">${escapeHtml(item.label)}</span>
@@ -188,6 +217,70 @@ if (etfTickerTrack) {
     }
   }
 
+  // --- Sparkline trend history ---
+  // Finnhub's historical candle endpoint (/stock/candle) requires a paid
+  // plan and returns "You don't have access to this resource" on the free
+  // tier used here. Instead we accumulate our own trend client-side: every
+  // time a fresh (non-cached) quote is fetched, we append a snapshot per
+  // symbol to localStorage, capped in size and spaced out in time. Over
+  // repeat visits this builds a real trend for the "au survol" sparkline,
+  // even though it won't be a full 7 days deep on the very first visit.
+  const HISTORY_KEY = 'etfHistory';
+  const HISTORY_MIN_GAP_MS = 60 * 60 * 1000; // don't record more than once/hour per symbol
+  const HISTORY_MAX_POINTS = 168; // ~7 days at one point/hour
+
+  function readHistory() {
+    try {
+      const raw = localStorage.getItem(HISTORY_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function recordHistory(results) {
+    try {
+      const history = readHistory();
+      const now = Date.now();
+      results.forEach((item) => {
+        if (item.price == null) return;
+        const points = history[item.symbol] || [];
+        const last = points[points.length - 1];
+        if (!last || now - last.t >= HISTORY_MIN_GAP_MS) {
+          points.push({ t: now, p: item.price });
+          if (points.length > HISTORY_MAX_POINTS) points.splice(0, points.length - HISTORY_MAX_POINTS);
+        }
+        history[item.symbol] = points;
+      });
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+    } catch (e) {
+      /* ignore quota/storage errors */
+    }
+  }
+
+  function buildSparklineSVG(points) {
+    if (!points || points.length < 2) return null;
+    const width = 74;
+    const height = 24;
+    const pad = 2;
+    const prices = points.map((pt) => pt.p);
+    const min = Math.min(...prices);
+    const max = Math.max(...prices);
+    const range = max - min || 1;
+    const step = (width - pad * 2) / (points.length - 1);
+    const coords = points
+      .map((pt, i) => {
+        const x = pad + i * step;
+        const y = height - pad - ((pt.p - min) / range) * (height - pad * 2);
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      })
+      .join(' ');
+    const isUp = prices[prices.length - 1] >= prices[0];
+    return `<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" aria-hidden="true">
+      <polyline class="etf-spark-line ${isUp ? 'etf-spark-up' : 'etf-spark-down'}" points="${coords}" />
+    </svg>`;
+  }
+
   function readCache() {
     try {
       const raw = localStorage.getItem(CACHE_KEY);
@@ -215,6 +308,7 @@ if (etfTickerTrack) {
     const fresh = await fetchEtfData();
     if (fresh) {
       writeCache(fresh);
+      recordHistory(fresh);
       renderTicker(fresh);
     } else if (cached) {
       renderTicker(cached.data); // stale but better than nothing
@@ -228,6 +322,57 @@ if (etfTickerTrack) {
   setInterval(() => {
     if (!document.hidden) loadTicker({ forceRefresh: true });
   }, REFRESH_INTERVAL_MS);
+
+  // --- Sparkline hover tooltip ---
+  // Delegated on the track (items get rebuilt on every render), rendered
+  // as a position:fixed element on <body> so it escapes .etf-ticker's
+  // overflow:hidden (needed for the scrolling marquee effect).
+  let sparkTooltipEl = null;
+
+  function hideSparkTooltip() {
+    if (sparkTooltipEl) {
+      sparkTooltipEl.remove();
+      sparkTooltipEl = null;
+    }
+  }
+
+  function showSparkTooltip(itemEl, symbol) {
+    const history = readHistory();
+    const points = history[symbol] || [];
+    const svg = buildSparklineSVG(points);
+    const caption = svg
+      ? (isFrenchPage ? `Tendance (${points.length} pts)` : `Trend (${points.length} pts)`)
+      : (isFrenchPage ? 'Historique en cours de constitution…' : 'Building trend history…');
+
+    hideSparkTooltip();
+    const tooltip = document.createElement('div');
+    tooltip.className = 'etf-spark-tooltip';
+    tooltip.innerHTML = `${svg || ''}<span class="etf-spark-caption">${escapeHtml(caption)}</span>`;
+    document.body.appendChild(tooltip);
+
+    const rect = itemEl.getBoundingClientRect();
+    const tipRect = tooltip.getBoundingClientRect();
+    let left = rect.left + rect.width / 2;
+    left = Math.max(tipRect.width / 2 + 8, Math.min(left, window.innerWidth - tipRect.width / 2 - 8));
+    tooltip.style.left = `${left}px`;
+    tooltip.style.top = `${rect.bottom + 8}px`;
+
+    sparkTooltipEl = tooltip;
+  }
+
+  etfTickerTrack.addEventListener('mouseover', (e) => {
+    const item = e.target.closest('.etf-ticker-item');
+    if (item && item.dataset.symbol) showSparkTooltip(item, item.dataset.symbol);
+  });
+
+  etfTickerTrack.addEventListener('mouseout', (e) => {
+    const item = e.target.closest('.etf-ticker-item');
+    const toItem = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.etf-ticker-item');
+    if (item && item !== toItem) hideSparkTooltip();
+  });
+
+  etfTickerTrack.addEventListener('scroll', hideSparkTooltip);
+  window.addEventListener('scroll', hideSparkTooltip, { passive: true });
 }
 
 if (document.getElementById('my-work-link')) {
