@@ -37,10 +37,10 @@
         }
       })();
     </script>
-		<link rel="stylesheet" href="./css/layout.css?v=5">
+		<link rel="stylesheet" href="./css/layout.css?v=6">
     <link rel="stylesheet" href="./css/typography.css">
     <link rel="stylesheet" href="./css/utilities.css?v=2">
-		<script defer src="./js/script.js?v=5"></script>
+		<script defer src="./js/script.js?v=6"></script>
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <!-- Swiper JS -->
@@ -151,6 +151,23 @@
             <p>Approche Monte Carlo pour une tarification efficace des options financières.</p>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- EASTER EGG TERMINAL BLOOMBERG (visible uniquement en mode Terminal) -->
+    <section id="cli-section" class="cli-section">
+      <div class="cli-widget" id="cli-widget">
+        <div class="cli-window-bar">
+          <span class="cli-dot cli-dot-red"></span>
+          <span class="cli-dot cli-dot-yellow"></span>
+          <span class="cli-dot cli-dot-green"></span>
+          <span class="cli-window-title">camille@portfolio: ~</span>
+        </div>
+        <div class="cli-output" id="cli-output" aria-live="polite"></div>
+        <div class="cli-input-row">
+          <span class="cli-prompt">camille@portfolio:~$</span>
+          <input type="text" id="cli-input" class="cli-input" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Entrée de commande du terminal" placeholder="tapez 'help'">
         </div>
       </div>
     </section>

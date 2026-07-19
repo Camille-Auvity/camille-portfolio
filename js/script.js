@@ -269,3 +269,98 @@ document.addEventListener("DOMContentLoaded", () => {
     carousel.scrollLeft = scrollLeft - walk;
   });
 });
+
+// Bloomberg terminal easter egg: a tiny fake CLI, only visible/relevant
+// while data-theme="terminal" is active (see .cli-section in layout.css).
+const cliInput = document.getElementById('cli-input');
+const cliOutput = document.getElementById('cli-output');
+if (cliInput && cliOutput) {
+  const isFrCli = location.pathname.includes('_fr');
+  const CLI_PROMPT = 'camille@portfolio:~$';
+
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const cliCommands = isFrCli ? {
+    help: () => [
+      'Commandes disponibles :',
+      '  whoami       - qui suis-je',
+      '  skills       - compétences techniques',
+      '  projects     - voir les projets',
+      '  experience   - voir les stages',
+      '  education    - parcours académique',
+      '  contact      - me contacter',
+      '  clear        - vider le terminal',
+    ],
+    whoami: () => ['Camille Auvity — étudiant en data science & ingénierie IA.', 'Triple diplôme : MEng & MiM & MiFEng.'],
+    skills: () => ['Python, SQL, Machine Learning, séries temporelles, modélisation financière, dataviz.'],
+    projects: () => { scrollToId('my-work-section'); return ['→ direction la section projets...']; },
+    experience: () => { scrollToId('internships-section'); return ['→ direction la section stages...']; },
+    education: () => { scrollToId('studies-section'); return ['→ direction la section éducation...']; },
+    contact: () => { scrollToId('contacts-section'); return ['Email: caauvity@orange.fr', 'LinkedIn: /camille-auvity', 'GitHub: @camille-auvity']; },
+    sudo: () => ['Belle tentative. Permission refusée 😄'],
+    date: () => [new Date().toString()],
+    ls: () => ['about  education  experience  projects  contact'],
+  } : {
+    help: () => [
+      'Available commands:',
+      '  whoami       - who this site is about',
+      '  skills       - technical skills',
+      '  projects     - jump to the projects section',
+      '  experience   - jump to work experience',
+      '  education    - jump to education',
+      '  contact      - how to reach me',
+      '  clear        - clear the terminal',
+    ],
+    whoami: () => ['Camille Auvity — Data Science & AI Engineering student.', 'Triple degree: MEng & MiM & MiFEng.'],
+    skills: () => ['Python, SQL, Machine Learning, time series, financial modeling, data viz.'],
+    projects: () => { scrollToId('my-work-section'); return ['→ scrolling to projects...']; },
+    experience: () => { scrollToId('internships-section'); return ['→ scrolling to experience...']; },
+    education: () => { scrollToId('studies-section'); return ['→ scrolling to education...']; },
+    contact: () => { scrollToId('contacts-section'); return ['Email: caauvity@orange.fr', 'LinkedIn: /camille-auvity', 'GitHub: @camille-auvity']; },
+    sudo: () => ['Nice try. Permission denied 😄'],
+    date: () => [new Date().toString()],
+    ls: () => ['about  education  experience  projects  contact'],
+  };
+
+  function cliPrintLine(text, isCommand) {
+    const line = document.createElement('div');
+    line.className = isCommand ? 'cli-line cli-line-command' : 'cli-line';
+    line.textContent = text;
+    cliOutput.appendChild(line);
+    cliOutput.scrollTop = cliOutput.scrollHeight;
+  }
+
+  function cliRun(raw) {
+    cliPrintLine(`${CLI_PROMPT} ${raw}`, true);
+    const cmd = raw.trim().toLowerCase();
+    if (!cmd) return;
+    if (cmd === 'clear') {
+      cliOutput.innerHTML = '';
+      return;
+    }
+    const handler = cliCommands[cmd];
+    if (handler) {
+      handler().forEach((line) => cliPrintLine(line));
+    } else {
+      cliPrintLine(isFrCli ? `commande introuvable : ${cmd} (essayez "help")` : `command not found: ${cmd} (try "help")`);
+    }
+  }
+
+  cliPrintLine(isFrCli ? 'Tapez "help" pour la liste des commandes.' : 'Type "help" to see available commands.');
+
+  cliInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = cliInput.value;
+      if (val.trim() !== '') cliRun(val);
+      cliInput.value = '';
+    }
+  });
+
+  const cliWidget = document.getElementById('cli-widget');
+  if (cliWidget) {
+    cliWidget.addEventListener('click', () => cliInput.focus());
+  }
+}
