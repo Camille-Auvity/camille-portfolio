@@ -1,3 +1,30 @@
+// Mobile nav hamburger: collapses the 6 nav links behind a toggle button
+// below 800px (see .nav-toggle / .nav-links in layout.css) instead of
+// letting them stack and push the whole navbar (and hero section) down.
+(function setupNavToggle() {
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (!navToggle || !navLinks) return;
+
+  function closeMenu() {
+    navToggle.classList.remove('is-open');
+    navLinks.classList.remove('is-open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('is-open');
+    navToggle.classList.toggle('is-open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close the menu once a link is used (so the page navigates/scrolls
+  // without the dropdown staying open over the content).
+  navLinks.querySelectorAll('.nav-button').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+})();
+
 // Scroll reveal (progressive enhancement fade-in on sections).
 // Only activated when IntersectionObserver exists and the user has no
 // "prefers-reduced-motion" preference. Otherwise sections stay fully

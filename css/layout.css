@@ -436,6 +436,19 @@ body * {
 /* Boutons à droite */
 .nav-right {
   display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-utils {
+  display: flex;
+  align-items: center;
   gap: 20px;
 }
 
@@ -472,20 +485,107 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hamburger button, hidden on desktop (shown only in the mobile media query below) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: 2px solid var(--c-border-soft);
+  border-radius: 10px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--c-text-2);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
 
 /* Responsive (mobile) */
 @media (max-width: 800px) {
   .navbar {
-    flex-direction: column;
+    position: relative; /* containing block for the .nav-links dropdown below */
     height: auto;
-    padding: 10px 20px;
-    gap: 10px;
+    padding: 14px 20px;
   }
 
   .nav-right {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
+    gap: 10px;
+  }
+
+  .nav-utils {
+    gap: 8px;
+  }
+
+  /* "Camille Auvity" + the lang button's full text label + the theme/settings
+     icons + the hamburger together were wider than a 375px phone, pushing
+     .nav-right past the right edge and causing horizontal page overflow.
+     Shrinking the title and collapsing the lang button to icon-only gets
+     everything to fit on one line again. */
+  .nav-title {
+    font-size: 17px;
+  }
+
+  .lang-button {
+    padding: 8px 10px;
+    gap: 0;
+  }
+
+  .lang-label {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Collapsed into a dropdown panel instead of pushing the whole navbar
+     (and hero section) down the page with 6 stacked links. */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding: 12px 20px 18px;
+    background: var(--surface-a80);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--c-border-soft);
+    box-shadow: 0 16px 30px var(--shadow-15);
+  }
+
+  .nav-links.is-open {
+    display: flex;
+  }
+
+  .nav-links .nav-button {
+    text-align: center;
+    width: 100%;
   }
 
   .nav-button {
@@ -692,6 +792,11 @@ html {
   flex-wrap: wrap;
   gap: 32px;
   justify-content: center;
+  /* Caps overall width so the "2 cards per row" layout doesn't turn into
+     two huge, disproportionately wide/short cards on large monitors. */
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* Project Cards */
@@ -1322,6 +1427,7 @@ html {
 .intro-left {
   flex: 2;
   text-align: center;
+  min-width: 0; /* let flex-basis:0 actually shrink instead of using content's intrinsic min-width */
 }
 
 .intro-photo {
@@ -1351,7 +1457,26 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 3; 
+  flex: 3;
+  min-width: 0; /* same fix as .intro-left: avoid content forcing the row wider than the viewport */
+  width: 100%;
+}
+
+/* Below 800px there isn't enough room to keep the photo/name column and the
+   project carousel side by side without cramming everything into ~half the
+   already-narrow viewport, so stack them instead. */
+@media (max-width: 800px) {
+  #intro-section {
+    flex-direction: column;
+    padding: 50px 20px;
+    gap: 30px;
+  }
+
+  .intro-left,
+  .intro-right-container {
+    flex: none;
+    width: 100%;
+  }
 }
 
 /* --- Recent Projects Carousel --- */
@@ -1428,6 +1553,15 @@ html {
 /* ===== HORIZONTAL CAROUSEL ===== */
 .horizontal-carousel {
   display: flex;
+  /* Without an explicit width, this flex item (inside a column flex parent
+     with align-items:center) shrinks/grows to fit its items' content size
+     instead of the parent's box — with several 500px-wide .carousel-item
+     children that pushed the whole hero section wider than the viewport,
+     causing horizontal page overflow, especially on mobile. Capping it to
+     the parent's width keeps the internal overflow-x:auto scroll working
+     without leaking outside the section. */
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -1560,7 +1694,11 @@ html {
 /* ===== ABOUT SECTION TWO-COLUMN LAYOUT ===== */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* Each column caps at 620px so paragraph text doesn't stretch into
+     unreadably long lines on large/ultra-wide monitors; justify-content
+     centers the (now possibly narrower-than-container) columns. */
+  grid-template-columns: minmax(0, 620px) minmax(0, 620px);
+  justify-content: center;
   align-items: start;
   gap: 70px;
   width: 100vw;               /* ✅ prend toute la largeur de la fenêtre */
